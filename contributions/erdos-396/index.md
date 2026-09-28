@@ -8,6 +8,8 @@ Task bundles: [`counterexample`](https://github.com/conjectures-io/conjectures-t
 
 > Is it true that for every $k$ there exists $n$ such that $$\prod_{0\leq i\leq k}(n-i) \mid \binom{2n}{n}?$$
 
-## Contributions (0)
+## Contributions (1)
 
-None yet. See [`guidelines.md`](../../guidelines.md) for how to add one.
+| # | Added | Contribution | Title | Kind | Mode | Declarations | Hotkey |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 | 2026-09-28 | [`71f4268abc72`](71f4268abc7293aa3044550c84fe871ab8e8722bb7e128bafd7d5ff04ed941ad/) | Adjacent quadratic rows with simultaneous prime-valuation bounds for Erdos 396 | lemma | formalized | `Contribution.Erdos396AdjacentRows.row_owner_unique`, `Contribution.Erdos396AdjacentRows.product_valuation`, `Contribution.Erdos396AdjacentRows.full_valuation_single_owner`, `Contribution.Erdos396AdjacentRows.supply_of_second_carry` +13 | `5ERrQR…gZ4APH` |

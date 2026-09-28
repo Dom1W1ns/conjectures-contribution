@@ -1,0 +1,46 @@
+{
+  "contribution_count": 1,
+  "contributions": [
+    {
+      "added": "2026-09-28",
+      "artifacts": [
+        "script.lean",
+        "sources.md"
+      ],
+      "author": "f87c18de9a30069767db2c795e3f5581235512b44448829dd3ddf47f62ff3dd5",
+      "coldkey": "5GbkoeAtBe8peaduBJdiwDrtEWpTAoBGkbKAcuUi3kNTFPMv",
+      "contribution_id": "71f4268abc7293aa3044550c84fe871ab8e8722bb7e128bafd7d5ff04ed941ad",
+      "declarations": [
+        "Contribution.Erdos396AdjacentRows.row_owner_unique",
+        "Contribution.Erdos396AdjacentRows.product_valuation",
+        "Contribution.Erdos396AdjacentRows.full_valuation_single_owner",
+        "Contribution.Erdos396AdjacentRows.supply_of_second_carry",
+        "Contribution.Erdos396AdjacentRows.positive_correction_upper",
+        "Contribution.Erdos396AdjacentRows.integer_negative",
+        "Contribution.Erdos396AdjacentRows.upper_owner_payment",
+        "Contribution.Erdos396AdjacentRows.scaled_cofactor",
+        "Contribution.Erdos396AdjacentRows.scaled_owner_all_width",
+        "Contribution.Erdos396AdjacentRows.triple_slope_mask",
+        "Contribution.Erdos396AdjacentRows.double_slope_mask",
+        "Contribution.Erdos396AdjacentRows.mixedPair",
+        "Contribution.Erdos396AdjacentRows.mixedPair_invariant",
+        "Contribution.Erdos396AdjacentRows.mixedPair_growth",
+        "Contribution.Erdos396AdjacentRows.cofinal_mixed_shapes",
+        "Contribution.Erdos396AdjacentRows.cofinal_adjacent_rows",
+        "Contribution.Erdos396AdjacentRows.example_five_term_prime_payment"
+      ],
+      "hotkey": "5ERrQRW8cA5ccxHiqEhtHvGQ8UCVM1m1RRQnp5k48SgZ4APH",
+      "kind": "lemma",
+      "mode": "formalized",
+      "parents": [],
+      "path": "71f4268abc7293aa3044550c84fe871ab8e8722bb7e128bafd7d5ff04ed941ad/",
+      "tasks_commit": "6a786f997e18e8f095762a2830d191b7e25e505e",
+      "title": "Adjacent quadratic rows with simultaneous prime-valuation bounds for Erdos 396"
+    }
+  ],
+  "open": true,
+  "problem_id": "fc-6a786f99-erdos396-erdos-396-12151595e2977023b3167100c6830c99-problem",
+  "reward_target_id": "fc-target:Erdos396.erdos_396",
+  "schema_version": 2,
+  "target": "erdos-396"
+}
