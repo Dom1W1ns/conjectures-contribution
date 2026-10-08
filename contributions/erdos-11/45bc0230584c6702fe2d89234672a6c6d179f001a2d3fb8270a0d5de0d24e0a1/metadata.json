@@ -1,0 +1,34 @@
+{
+  "contribution_id": "45bc0230584c6702fe2d89234672a6c6d179f001a2d3fb8270a0d5de0d24e0a1",
+  "payload": {
+    "artifacts": [
+      {
+        "name": "script.lean",
+        "sha256": "0ed22775e2b24901e5e61b30131569a3930afadf93ccdd932d94206cb2e85386",
+        "size": 193658
+      },
+      {
+        "name": "sources.md",
+        "sha256": "80ccea0be133716fe5eda0be88fc72fce556c88f349689651f3bfd8e8f5f34f9",
+        "size": 7778
+      }
+    ],
+    "author": "257f2a80475e6ab0f5c068a44e45625c20ca9015da6953bbd575c4c35295cff3",
+    "kind": "partial-proof",
+    "mode": "either",
+    "parents": [
+      "9912bf43713402fa030c83358b48a3fe22041358846f121c30389f4e1775d74a"
+    ],
+    "reward": {
+      "coldkey": "5DcvqX88bHFnXwY9JovVsaTkQrBkwnXzLLuFBqpK3ggqLX1C",
+      "hotkey": "5DJ6XRWZFZ8b3kDbDEzNcMkaAjaMppa4rZz1S1H6Vpt2wDiJ"
+    },
+    "reward_target_id": "fc-target:Erdos11.erdos_11",
+    "schema_version": 1,
+    "target": "erdos-11",
+    "tasks_commit": "6a786f997e18e8f095762a2830d191b7e25e505e",
+    "title": "Square-divisor certificates, unbounded obstruction prefixes, and exponent separation for Erdos 11"
+  },
+  "reward_signature": "d49b58f072b0267412abacf6d96ab951209593f7fabbcca48690336a2a040b79a97846c0bf30974d6faa009050360a8353afa4400f47360386928d4ba8d83a84",
+  "signature": "00e4f2774b5e7f6d4b1960fa5efa6d5031308174ed785704ba38be350494a23c3096e76a98842ffde333001e65149c3e5cfd7e4d51f9d9824184e4f93ce27702"
+}
