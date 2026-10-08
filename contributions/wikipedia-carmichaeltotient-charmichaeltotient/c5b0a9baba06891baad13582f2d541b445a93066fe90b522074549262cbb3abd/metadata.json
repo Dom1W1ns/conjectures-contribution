@@ -1,0 +1,32 @@
+{
+  "contribution_id": "c5b0a9baba06891baad13582f2d541b445a93066fe90b522074549262cbb3abd",
+  "payload": {
+    "artifacts": [
+      {
+        "name": "script.lean",
+        "sha256": "f6fde8921efa6c85f50af8ca6c7842274ac645e016f5f8414e759b8b4470a639",
+        "size": 14506
+      },
+      {
+        "name": "sources.md",
+        "sha256": "3e0a18ef6c7c42dd3d5c44675a1e076f47f1728db0371840bbae22e5c3683143",
+        "size": 2489
+      }
+    ],
+    "author": "257f2a80475e6ab0f5c068a44e45625c20ca9015da6953bbd575c4c35295cff3",
+    "kind": "partial-proof",
+    "mode": "either",
+    "parents": [],
+    "reward": {
+      "coldkey": "5DcvqX88bHFnXwY9JovVsaTkQrBkwnXzLLuFBqpK3ggqLX1C",
+      "hotkey": "5DJ6XRWZFZ8b3kDbDEzNcMkaAjaMppa4rZz1S1H6Vpt2wDiJ"
+    },
+    "reward_target_id": "fc-target:CarmichaelTotient.charmichaelTotient",
+    "schema_version": 1,
+    "target": "wikipedia-carmichaeltotient-charmichaeltotient",
+    "tasks_commit": "6a786f997e18e8f095762a2830d191b7e25e505e",
+    "title": "Prime-square forcing and collision transport for Carmichael totients"
+  },
+  "reward_signature": "9afe8ad946fd32a375989978471f5369ac523cebba5d091b5d4098a225f76705f5c8d41419a3edb8b5582360aa9864dbe1c07817f3e0f400554088fd844e4181",
+  "signature": "f0f0cabb8403a00d2338d23f7d216e1ed6ef383563e1ed5f2670969263d2225421cab294a51ae9ad76032517d51d310b07fc465e7ce33f08f47197dd87516508"
+}
