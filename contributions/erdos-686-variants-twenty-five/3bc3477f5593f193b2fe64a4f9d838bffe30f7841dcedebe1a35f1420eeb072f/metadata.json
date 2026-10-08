@@ -1,5 +1,5 @@
 {
-  "contribution_id": "f300f0b627040a577cd014051efb359d150817aa2ac6e225a1e2b6eee3a286f9",
+  "contribution_id": "3bc3477f5593f193b2fe64a4f9d838bffe30f7841dcedebe1a35f1420eeb072f",
   "payload": {
     "artifacts": [
       {
@@ -14,8 +14,8 @@
       },
       {
         "name": "declaration_axioms.json",
-        "sha256": "d1fe9a8a0ec601f6069a58df6d74f9c4302bbf6d61f3e6632c70dc37cadb5da9",
-        "size": 17544
+        "sha256": "5209bff26c34722f04dd8c75d4e7637a170b716811959c78bcc8c2e133442ccd",
+        "size": 56668
       },
       {
         "name": "field36-maximal-order.txt",
@@ -36,6 +36,11 @@
         "name": "full_grid_determinant_obstruction.md",
         "sha256": "4723576ffe2539053fb359a43a00c5b92bdbabd98b1df67826bcf5b8144d9dad",
         "size": 7368
+      },
+      {
+        "name": "isogeny-screen.json",
+        "sha256": "1c887811b876c521f99f9e25744d3a08e20e777027cb690f6ef515a7dbc59bcc",
+        "size": 5079
       },
       {
         "name": "matching-maximal-order.txt",
@@ -94,33 +99,38 @@
       },
       {
         "name": "research-status.md",
-        "sha256": "6d6187c08b7636a23f875c5dc906c7e3ffb3cacb75603d06a5c40a7403938d1d",
-        "size": 5341
+        "sha256": "3ecaa0745aa8f050185cbd0dc9fa427aec88d41a300a819e1dca7dd914beff28",
+        "size": 8462
       },
       {
         "name": "script.lean",
-        "sha256": "da7d3fdda88b27fd040f21d18d245cb512dc3b7eda4d4fdae76781061803368a",
-        "size": 21259
+        "sha256": "1d161e6d4c47a3bf3304f9ce6ae9bdc2aac0c98008f93a6c020f2d20a2d709c4",
+        "size": 37634
       },
       {
         "name": "source_manifest.json",
-        "sha256": "168fd3a1fa71be331b6b481a9daec774f48a47bbb3477cb1a16f843a8c11c3dd",
-        "size": 19538
+        "sha256": "a3391d400329bf83bb88a6bffe89e5ae4120a1d82fd5a20900c81ee7724d8a9e",
+        "size": 27761
       },
       {
         "name": "sources.md",
-        "sha256": "eb9230c6f61c0aa2beeb007a8fbcf959f4000c24e7da11cbd3e23d6da7a0e0ef",
-        "size": 4890
+        "sha256": "965e981ad40ac44602e7ffb0cb2e54cb2cd418f0329a2756c8404e0ce0f9ae0d",
+        "size": 7977
       },
       {
         "name": "theorem-inventory.md",
-        "sha256": "f54d4a060ed0c5da7b76c828a1fcaa54aeb68752cbd569d995f16f28f4c9ae0e",
-        "size": 3015
+        "sha256": "a8180a694f0a213179ccc64de54729200e1b794ffcbce31f815fab8edf416333",
+        "size": 4144
       },
       {
         "name": "verification.json",
-        "sha256": "a469e5efb4bd7e816172da1ef825f5c8066bc03f160806a27a65c3e6e9ff40d4",
-        "size": 715
+        "sha256": "f0d38fa28368c1fc2934c6ea3b245d0ca847e5934a1d961cbc7ca177b5f0fa8f",
+        "size": 746
+      },
+      {
+        "name": "verify-isogeny-screen.py",
+        "sha256": "4edade4918b94f422a1d82df3abc9bdf6fdabec33b1ae6636b6e5188f5757a11",
+        "size": 1812
       },
       {
         "name": "verify_field36.py",
@@ -150,8 +160,8 @@
     "schema_version": 1,
     "target": "erdos-686-variants-twenty-five",
     "tasks_commit": "6a786f997e18e8f095762a2830d191b7e25e505e",
-    "title": "Multiplier25: length6 exclusion and prime-transport and quotient proof interfaces"
+    "title": "Multiplier25: length-six exclusion and all-height length-five square-pair exclusions"
   },
-  "reward_signature": "68269fa47e402b8be87b4de86fb02af9bbb409e2b17c1914f683b2c825180a60f1ca36fb685077fbdc0d591fe619e38e037d89fd948c61f64a6d7477d0b4e28b",
-  "signature": "1bca1879a773d1c0d8f5421ec209a6a03ef80a1f9f5c44872d33cf624dc3d5ef850bd1944a9d51d8be1791ff36b5393332d7ed568f6e7265df5749cb0169890e"
+  "reward_signature": "f4d6feb27b3c29935b22804ebab31f5fea42fffcfe771fe8f011d15971db1540780ba21de3dea6a5fb778648e5af67086f0743f573e96b16195fd6472ab55783",
+  "signature": "563e75c33a9e0c732c93b352a82e29d7c4e28712ad75f43e645ed8d390104056727fbddcc1f90c967495cf1e7a89830649982a68fe4e4a52c2e3f05a4096830f"
 }

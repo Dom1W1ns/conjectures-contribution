@@ -1,14 +1,14 @@
 /-
-Partial contribution concerning Erdős problem 686, multiplier 25.
+Partial contribution concerning Erdos problem 686, multiplier 25.
 
-This file proves the complete fixed-length k=6 exclusion and several necessary
-conditions and algebraic bridges.  It does not prove the full all-length
-statement, the k=5 exclusion, class-group completeness, or elliptic rank bounds.
+This file includes every completed unique proof module from this research.
+It proves the k=6 exclusion and the unbounded conditional k=5 exclusion when
+any cross-block term ratio is a rational square, plus necessary conditions
+and algebraic bridges. Neither the complete k=5 case nor all-k bounty is solved.
+No numerical rank upper bound or class-group completeness is asserted.
 
-The six original proof bodies and namespaces are preserved below, followed by a
-direct-use lemma for the original rational-ratio statement.  Imports are
-consolidated here; development-time diagnostic commands are kept in the
-separate audit harness.  Source provenance and theorem scope accompany this file.
+Proof bodies and namespaces are preserved, imports deduplicated, diagnostic
+commands omitted. Supporting research and attribution are supplied separately.
 -/
 
 
@@ -26,6 +26,7 @@ import Mathlib.Algebra.Divisibility.Basic
 import Mathlib.Algebra.Field.ZMod
 import Mathlib.LinearAlgebra.Basis.VectorSpace
 import Mathlib.LinearAlgebra.Dimension.Constructions
+import Mathlib.Data.Rat.Lemmas
 
 /- Original module: work/session4/K6.lean -/
 
@@ -533,3 +534,402 @@ theorem k6_ratio_exclusion (n m : ℕ) (hmn : n + 6 ≤ m) :
   exact k6_exclusion n m hmn hn
 
 end Contribution.Erdos686TwentyFive
+
+/- Original module: work/session14/SquareCenterExclusion.lean -/
+
+/- An unbounded conditional exclusion for length five, not the full bounty. -/
+
+namespace Contribution.Erdos686TwentyFive.SquareCenter
+
+def product (x : ℤ) : ℤ := x * (x ^ 2 - 1) * (x ^ 2 - 4)
+
+def nearSquare (x : ℤ) : ℤ := 2 * x ^ 2 - 5
+
+lemma square_identity (x : ℤ) :
+    x * (nearSquare x ^ 2 - 9) = 4 * product x := by
+  unfold nearSquare product
+  ring
+
+lemma product_positive {x : ℤ} (hx : 3 ≤ x) : 0 < product x := by
+  unfold product
+  have h1 : 0 < x ^ 2 - 1 := by nlinarith
+  have h4 : 0 < x ^ 2 - 4 := by nlinarith
+  exact mul_pos (mul_pos (by omega) h1) h4
+
+lemma less_than_double {x y : ℤ} (hx : 3 ≤ x)
+    (h : product y = 25 * product x) : y < 2 * x := by
+  by_contra hlt
+  have hy : 2 * x ≤ y := by omega
+  have hxx : 0 ≤ x := by omega
+  have hyy : 0 ≤ y := by omega
+  have hsq : (2 * x) ^ 2 ≤ y ^ 2 := by nlinarith
+  have hmono : product (2 * x) ≤ product y := by
+    unfold product
+    gcongr <;> nlinarith
+  have hpos : 0 < x * (x ^ 2 - 1) * (7 * x ^ 2 + 92) := by
+    apply mul_pos
+    · apply mul_pos <;> nlinarith
+    · positivity
+  have hid : product (2 * x) - 25 * product x =
+      x * (x ^ 2 - 1) * (7 * x ^ 2 + 92) := by unfold product; ring
+  omega
+
+/-- No multiplier-25 length-five identity has positive centers with a common
+integer factor times squares. This has no height bound on any variable. -/
+theorem common_square_factor_exclusion (d a b : ℤ)
+    (hd : 1 ≤ d) (ha : 1 ≤ a) (hab : a < b)
+    (hx : 3 ≤ d * a ^ 2) :
+    product (d * b ^ 2) ≠ 25 * product (d * a ^ 2) := by
+  intro heq
+  let x := d * a ^ 2
+  let y := d * b ^ 2
+  have hb : 1 ≤ b := by omega
+  have hxy : y < 2 * x := less_than_double hx heq
+  have hratio : b ^ 2 < 2 * a ^ 2 := by
+    dsimp [x, y] at hxy
+    nlinarith
+  have ha3 : 3 ≤ a := by
+    by_contra hh
+    have hsmall : a ≤ 2 := by omega
+    have haux := mul_nonneg (show 0 ≤ a by omega) (show 0 ≤ 2 - a by omega)
+    have hdiff := mul_nonneg (show 0 ≤ b - a - 1 by omega)
+      (show 0 ≤ b + a + 1 by omega)
+    nlinarith
+  have hxlow : a ^ 2 ≤ x := by
+    dsimp [x]
+    nlinarith [mul_nonneg (show 0 ≤ d - 1 by omega) (sq_nonneg a)]
+  have hylow : 3 ≤ y := by
+    dsimp [y]
+    nlinarith [mul_nonneg (show 0 ≤ d - 1 by omega) (sq_nonneg b)]
+  let U := b * nearSquare y
+  let V := 5 * a * nearSquare x
+  have hU : 0 < U := by
+    dsimp [U, nearSquare]
+    apply mul_pos (by omega)
+    nlinarith
+  have hV : 0 < V := by
+    dsimp [V, nearSquare]
+    apply mul_pos (by nlinarith)
+    nlinarith [hx]
+  have hrel : U ^ 2 - V ^ 2 = 9 * (b ^ 2 - 25 * a ^ 2) := by
+    have hix := square_identity x
+    have hiy := square_identity y
+    have hbase : d * (b ^ 2 * (nearSquare y ^ 2 - 9) -
+        25 * a ^ 2 * (nearSquare x ^ 2 - 9)) = 0 := by
+      calc
+        _ = y * (nearSquare y ^ 2 - 9) -
+            25 * (x * (nearSquare x ^ 2 - 9)) := by dsimp [x, y]; ring
+        _ = 0 := by rw [hix, hiy]; change 4 * product (d * b ^ 2) - 25 * (4 * product (d * a ^ 2)) = 0; rw [heq]; ring
+    have hzero : b ^ 2 * (nearSquare y ^ 2 - 9) -
+        25 * a ^ 2 * (nearSquare x ^ 2 - 9) = 0 :=
+      (mul_eq_zero.mp hbase).resolve_left (by omega)
+    dsimp [U, V]
+    nlinarith only [hzero]
+  have hUV : U < V := by nlinarith [sq_nonneg a]
+  have hgap : 1 ≤ V - U := by omega
+  have hsum : V + U ≤ 9 * (25 * a ^ 2 - b ^ 2) := by
+    have hp := mul_nonneg (show 0 ≤ V - U - 1 by omega)
+      (show 0 ≤ V + U by omega)
+    nlinarith [hrel]
+  have ha2 : 9 ≤ a ^ 2 := by nlinarith
+  have h27 : 27 * a ≤ a ^ 4 := by
+    have h1 : 3 * a ≤ a ^ 2 := by nlinarith
+    have h2 := mul_nonneg (show 0 ≤ a ^ 2 - 9 by omega) (sq_nonneg a)
+    nlinarith
+  have hxsq : a ^ 4 ≤ x ^ 2 := by nlinarith [sq_nonneg (x - a ^ 2)]
+  have hq : 45 * a < nearSquare x := by
+    dsimp [nearSquare]
+    nlinarith
+  have hbig : 225 * a ^ 2 < V := by
+    dsimp [V]
+    nlinarith [mul_pos (show 0 < 5 * a by omega) (show 0 < nearSquare x - 45 * a by omega)]
+  nlinarith [sq_nonneg b]
+
+end Contribution.Erdos686TwentyFive.SquareCenter
+
+/- Original module: work/session14/SquarePairExclusion.lean -/
+
+namespace Contribution.Erdos686TwentyFive.SquarePair
+
+def block (n : ℕ) : ℕ := (n+1)*(n+2)*(n+3)*(n+4)*(n+5)
+
+def bracket (n : ℕ) : ℕ := (1903654 * (n + 3)) / 1000000 - 3
+
+def row (n : ℕ) : Prop :=
+    (block (bracket n) < 25 * block n ∧ 25 * block n < block (bracket n + 1)) ∨
+    (block (bracket n - 1) < 25 * block n ∧ 25 * block n < block (bracket n))
+
+instance (n : ℕ) : Decidable (row n) := inferInstanceAs (Decidable (_ ∨ _))
+
+def check (s k : ℕ) : Bool :=
+  Nat.rec (motive := fun _ => ℕ → Bool)
+    (fun s => decide (row s))
+    (fun k ih s => ih s && ih (s + 2 ^ k)) k s
+
+theorem check_sound (k s : ℕ) (h : check s k = true) :
+    ∀ n, s ≤ n → n < s + 2 ^ k → row n := by
+  induction k generalizing s with
+  | zero =>
+    intro n hn hn'
+    have he : n = s := by norm_num at hn'; omega
+    subst n
+    simpa [check] using h
+  | succ k ih =>
+    have hs : check s k = true ∧ check (s + 2 ^ k) k = true := by
+      simpa only [check, Bool.and_eq_true_iff] using h
+    intro n hn hn'
+    by_cases hm : n < s + 2 ^ k
+    · exact ih s hs.1 n hn hm
+    · apply ih (s + 2 ^ k) hs.2 n (by omega)
+      rw [pow_succ] at hn'
+      omega
+
+lemma checked_16384 : check 0 14 = true := by decide +kernel
+
+theorem block_mono : Monotone block := by
+  intro n m h
+  unfold block
+  gcongr
+
+/-- A compact, kernel-checked bracketing certificate for a previously searched box. -/
+theorem finite_five_exclusion (n m : ℕ) (hn : n < 16384) :
+    block m ≠ 25 * block n := by
+  intro heq
+  have hr := check_sound 14 0 checked_16384 n (Nat.zero_le _) (by norm_num; exact hn)
+  rcases hr with ⟨hl, hu⟩ | ⟨hl, hu⟩
+  · by_cases hm : m ≤ bracket n
+    · have hb := block_mono hm
+      omega
+    · have hb := block_mono (show bracket n + 1 ≤ m by omega)
+      omega
+  · by_cases hm : m ≤ bracket n - 1
+    · have hb := block_mono hm
+      omega
+    · have hb := block_mono (show bracket n ≤ m by omega)
+      omega
+
+
+
+def q (i : ℕ) (t : ℤ) : ℤ :=
+  match i with
+  | 1 => 8*t^2 + 40*t + 40
+  | 2 => 8*t^2 + 20*t - 5
+  | 3 => 8*t^2 - 20
+  | 4 => 8*t^2 - 20*t - 5
+  | _ => 8*t^2 - 40*t + 40
+
+def r (i : ℕ) (t : ℤ) : ℤ :=
+  match i with
+  | 2 => 120*t + 409
+  | 3 => 144
+  | 4 => -120*t + 409
+  | _ => 64
+
+lemma q_lower (i : ℕ) (hi : 1 ≤ i) (hi' : i ≤ 5)
+    (t : ℤ) (ht : 10000 ≤ t) : 7*t^2 ≤ q i t := by
+  have h := mul_nonneg (show 0 ≤ t - 40 by omega) (show 0 ≤ t by omega)
+  interval_cases i <;> norm_num [q] <;> nlinarith
+
+lemma r_bound (i : ℕ) (hi : 1 ≤ i) (hi' : i ≤ 5)
+    (t : ℤ) (ht : 0 ≤ t) : -(120*t+409) ≤ r i t ∧ r i t ≤ 120*t+409 := by
+  interval_cases i <;> norm_num [r] <;> omega
+
+lemma near_identity (n i : ℕ) (hi : 1 ≤ i) (hi' : i ≤ 5) :
+    ((n : ℤ) + i) * (q i ((n : ℤ)+i)^2-r i ((n : ℤ)+i)) =
+      64 * (block n : ℤ) := by
+  interval_cases i <;> norm_num [q,r,block] <;> ring
+
+lemma residual_separation (i j : ℕ) (hi : 1 ≤ i) (hi' : i ≤ 5)
+    (hj : 1 ≤ j) (hj' : j ≤ 5) (u v : ℤ)
+    (hu : 10000 ≤ u) (hv : u ≤ v) (hv' : v ≤ 3*u) :
+    v*r j v ≠ 25*u*r i u := by
+  have hsq : v^2 ≤ 9*u^2 := by nlinarith [mul_nonneg (show 0 ≤ 3*u-v by omega) (show 0 ≤ 3*u+v by omega)]
+  have hsq' : u^2 ≤ v^2 := by nlinarith [mul_nonneg (show 0 ≤ v-u by omega) (show 0 ≤ v+u by omega)]
+  have hu2 : 10000*u ≤ u^2 := by nlinarith [mul_nonneg (show 0 ≤ u-10000 by omega) (show 0 ≤ u by omega)]
+  interval_cases i <;> interval_cases j <;> norm_num [r] <;> intro h <;> nlinarith
+
+lemma square_gap (d a b u v A B R S : ℤ)
+    (hd : 1 ≤ d) (ha : 1 ≤ a) (hb : a ≤ b)
+    (hu : 10000 ≤ u) (hv : u ≤ v) (hv' : v ≤ 3*u)
+    (hua : u = d*a^2) (hvb : v = d*b^2)
+    (hA : 7*u^2 ≤ A) (hB : 7*v^2 ≤ B)
+    (hR : -(120*u+409) ≤ R ∧ R ≤ 120*u+409)
+    (hS : -(120*v+409) ≤ S ∧ S ≤ 120*v+409)
+    (heq : b^2*(B^2-S) = 25*a^2*(A^2-R)) :
+    b*B = 5*a*A := by
+  have hb1 : 1 ≤ b := by omega
+  have hapos : 0 < a := by omega
+  have hu0 : 0 < u := by omega
+  have hv0 : 0 < v := by omega
+  have hau : a^2 ≤ u := by nlinarith [mul_nonneg (show 0 ≤ d-1 by omega) (sq_nonneg a)]
+  have hab2 : b^2 ≤ 3*a^2 := by nlinarith
+  have hv2 : u^2 ≤ v^2 := by nlinarith [mul_nonneg (show 0 ≤ v-u by omega) (show 0 ≤ v+u by omega)]
+  have hAu : 0 < A := by nlinarith
+  have hBu : 7*u^2 ≤ B := by nlinarith
+  have hB0 : 0 < B := by nlinarith
+  have hua100 : 100*a ≤ u := by
+    have hh : 10000*u ≤ u^2 := by nlinarith [mul_nonneg (show 0 ≤ u-10000 by omega) (show 0 ≤ u by omega)]
+    nlinarith
+  let U := b*B
+  let V := 5*a*A
+  have hU : 0 < U := by dsimp [U]; positivity
+  have hV : 0 < V := by dsimp [V]; positivity
+  have hsum : 42*a*u^2 ≤ U+V := by
+    have h1 := mul_nonneg (show 0 ≤ b-a by omega) (show 0 ≤ B by omega)
+    have h2 := mul_nonneg (show 0 ≤ a by omega) (show 0 ≤ B-7*u^2 by omega)
+    have h3 := mul_nonneg (show 0 ≤ 5*a by omega) (show 0 ≤ A-7*u^2 by omega)
+    dsimp [U,V]
+    nlinarith only [h1,h2,h3]
+  have hq : U^2-V^2 = b^2*S-25*a^2*R := by
+    dsimp [U,V]
+    nlinarith only [heq]
+  let T := a^2*(4080*u+11452)
+  have hS' : -(360*u+409) ≤ S ∧ S ≤ 360*u+409 := by constructor <;> linarith [hS.1,hS.2]
+  have hbS : -(3*a^2*(360*u+409)) ≤ b^2*S ∧
+      b^2*S ≤ 3*a^2*(360*u+409) := by
+    have h1 := mul_nonneg (sq_nonneg b) (show 0 ≤ S+(360*u+409) by omega)
+    have h2 := mul_nonneg (sq_nonneg b) (show 0 ≤ (360*u+409)-S by omega)
+    have h3 := mul_nonneg (show 0 ≤ 3*a^2-b^2 by omega) (show 0 ≤ 360*u+409 by omega)
+    constructor <;> nlinarith only [h1,h2,h3]
+  have haR : -(25*a^2*(120*u+409)) ≤ 25*a^2*R ∧
+      25*a^2*R ≤ 25*a^2*(120*u+409) := by
+    have h1 := mul_nonneg (show 0 ≤ 25*a^2 by positivity) (show 0 ≤ R+(120*u+409) by omega)
+    have h2 := mul_nonneg (show 0 ≤ 25*a^2 by positivity) (show 0 ≤ (120*u+409)-R by omega)
+    constructor <;> nlinarith only [h1,h2]
+  have hbound : -T ≤ U^2-V^2 ∧ U^2-V^2 ≤ T := by
+    dsimp [T]
+    constructor <;> nlinarith only [hbS.1,hbS.2,haR.1,haR.2,hq]
+  have hT : T < U+V := by
+    have h1 := mul_nonneg (show 0 ≤ u-100*a by omega) (show 0 ≤ 42*a*u by positivity)
+    have h2 := mul_pos (show 0 < a^2 by positivity)
+      (show 0 < 120*u-11452 by omega)
+    dsimp [T]
+    nlinarith only [h1,h2,hsum]
+  by_contra hne
+  change U ≠ V at hne
+  rcases lt_or_gt_of_ne hne with hlt | hgt
+  · have hh := mul_nonneg (show 0 ≤ V-U-1 by omega) (show 0 ≤ V+U by omega)
+    nlinarith [hbound.1]
+  · have hh := mul_nonneg (show 0 ≤ U-V-1 by omega) (show 0 ≤ U+V by omega)
+    nlinarith [hbound.2]
+
+
+lemma block_upper (n m : ℕ) (heq : block m = 25*block n) : m ≤ 2*n+4 := by
+  by_contra h
+  have hm : 2*n+5 ≤ m := by omega
+  have hp : 32*block n ≤ block m := by
+    calc
+      32*block n = (2*(n+1))*(2*(n+2))*(2*(n+3))*(2*(n+4))*(2*(n+5)) := by unfold block; ring
+      _ ≤ block m := by unfold block; gcongr <;> omega
+  have hpos : 0 < block n := by unfold block; positivity
+  omega
+
+/-- If any one term from each of two disjoint length-five blocks is a common
+positive integer times squares, the product ratio cannot be 25. No height limit. -/
+theorem common_square_pair_exclusion (n m i j d a b : ℕ)
+    (hi : 1 ≤ i) (hi' : i ≤ 5) (hj : 1 ≤ j) (hj' : j ≤ 5)
+    (hmn : n+5 ≤ m) (hd : 1 ≤ d) (ha : 1 ≤ a) (hb : 1 ≤ b)
+    (hl : n+i = d*a^2) (hh : m+j = d*b^2) :
+    block m ≠ 25*block n := by
+  intro heq
+  by_cases hn : n < 16384
+  · exact finite_five_exclusion n m hn heq
+  have hn' : 16384 ≤ n := by omega
+  have hm := block_upper n m heq
+  let u : ℤ := (n : ℤ)+i
+  let v : ℤ := (m : ℤ)+j
+  have hu : 10000 ≤ u := by dsimp [u]; omega
+  have hv : u ≤ v := by dsimp [u,v]; omega
+  have hv' : v ≤ 3*u := by dsimp [u,v]; omega
+  have hua : u = (d : ℤ)*(a : ℤ)^2 := by dsimp [u]; exact_mod_cast hl
+  have hvb : v = (d : ℤ)*(b : ℤ)^2 := by dsimp [v]; exact_mod_cast hh
+  have hdi : (1 : ℤ) ≤ d := by exact_mod_cast hd
+  have hai : (1 : ℤ) ≤ a := by exact_mod_cast ha
+  have hbi : (1 : ℤ) ≤ b := by exact_mod_cast hb
+  have hab : (a : ℤ) ≤ b := by
+    by_contra hn
+    have hsq : (b : ℤ)^2 ≤ (a : ℤ)^2 := by nlinarith
+    have hmul := mul_nonneg (show 0 ≤ (d : ℤ) by omega)
+      (show 0 ≤ (a : ℤ)^2-(b : ℤ)^2 by omega)
+    have huv : u < v := by dsimp [u,v]; omega
+    nlinarith
+  have hei : (block m : ℤ) = 25*(block n : ℤ) := by exact_mod_cast heq
+  have he1 := near_identity n i hi hi'
+  have he2 := near_identity m j hj hj'
+  have hcancel : (b : ℤ)^2*(q j v^2-r j v) =
+      25*(a : ℤ)^2*(q i u^2-r i u) := by
+    have hzero : (d : ℤ) * ((b : ℤ)^2*(q j v^2-r j v) -
+        25*(a : ℤ)^2*(q i u^2-r i u)) = 0 := by
+      calc
+        _ = v*(q j v^2-r j v)-25*(u*(q i u^2-r i u)) := by rw [hvb,hua]; ring
+        _ = 0 := by change ((m : ℤ)+j)*(q j ((m : ℤ)+j)^2-r j ((m : ℤ)+j))-25*(((n : ℤ)+i)*(q i ((n : ℤ)+i)^2-r i ((n : ℤ)+i))) = 0; rw [he1,he2,hei]; ring
+    exact sub_eq_zero.mp ((mul_eq_zero.mp hzero).resolve_left (by omega))
+  have hgap := square_gap (d : ℤ) a b u v (q i u) (q j v) (r i u) (r j v)
+    hdi hai hab hu hv hv' hua hvb
+    (q_lower i hi hi' u hu) (q_lower j hj hj' v (by omega))
+    (r_bound i hi hi' u (by omega)) (r_bound j hj hj' v (by omega)) hcancel
+  have hres : (b : ℤ)^2*r j v = 25*(a : ℤ)^2*r i u := by
+    have hs := congrArg (fun t : ℤ => t^2) hgap
+    nlinarith only [hs,hcancel]
+  apply residual_separation i j hi hi' hj hj' u v hu hv hv'
+  calc
+    v*r j v = (d : ℤ)*((b : ℤ)^2*r j v) := by rw [hvb]; ring
+    _ = (d : ℤ)*(25*(a : ℤ)^2*r i u) := by rw [hres]
+    _ = 25*u*r i u := by rw [hua]; ring
+
+/-- The same unbounded exclusion in the finite-product notation of the bounty. -/
+theorem k5_square_pair_exclusion (n m i j d a b : ℕ)
+    (hi : 1 ≤ i) (hi' : i ≤ 5) (hj : 1 ≤ j) (hj' : j ≤ 5)
+    (hmn : n+5 ≤ m) (hd : 1 ≤ d) (ha : 1 ≤ a) (hb : 1 ≤ b)
+    (hl : n+i = d*a^2) (hh : m+j = d*b^2) :
+    (∏ t ∈ Finset.Icc 1 5, (m+t)) ≠ 25*(∏ t ∈ Finset.Icc 1 5, (n+t)) := by
+  have hprod (z : ℕ) : (∏ t ∈ Finset.Icc 1 5, (z+t)) = block z := by
+    norm_num [Finset.prod_Icc_succ_top, Finset.Icc_self, block]
+  simpa only [hprod] using common_square_pair_exclusion n m i j d a b
+    hi hi' hj hj' hmn hd ha hb hl hh
+
+
+
+lemma square_ratio_representation (u v : ℕ) (hu : 0 < u) (hv : 0 < v)
+    (hs : IsSquare ((v : ℚ)/(u : ℚ))) :
+    ∃ d a b : ℕ, 1 ≤ d ∧ 1 ≤ a ∧ 1 ≤ b ∧ u=d*a^2 ∧ v=d*b^2 := by
+  obtain ⟨⟨b,hb⟩,⟨a,ha⟩⟩ := Rat.isSquare_iff.mp hs
+  obtain ⟨c,hcv,hcu⟩ := Rat.exists_eq_mul_div_num_and_eq_mul_div_den
+    (v : ℤ) (show (u : ℤ) ≠ 0 by exact_mod_cast (Nat.ne_of_gt hu))
+  have hl : u = c.natAbs*a^2 := by
+    have h := congrArg Int.natAbs hcu
+    simpa only [Int.natAbs_mul, Int.natAbs_natCast, Int.cast_natCast,
+      ha, pow_two] using h
+  have hh : v = c.natAbs*b.natAbs^2 := by
+    have h := congrArg Int.natAbs hcv
+    simpa only [Int.natAbs_mul, Int.natAbs_natCast, Int.cast_natCast,
+      hb, Int.natAbs_mul, pow_two] using h
+  have hd : 1 ≤ c.natAbs := by
+    by_contra h
+    have hc : c.natAbs = 0 := by omega
+    simp [hc] at hl
+    omega
+  have ha' : 1 ≤ a := by
+    by_contra h
+    have ha0 : a = 0 := by omega
+    simp [ha0] at hl
+    omega
+  have hb' : 1 ≤ b.natAbs := by
+    by_contra h
+    have hb0 : b.natAbs = 0 := by omega
+    simp [hb0] at hh
+    omega
+  exact ⟨c.natAbs,a,b.natAbs,hd,ha',hb',hl,hh⟩
+
+/-- In every hypothetical admissible length-five witness, all 25 cross-block
+term ratios are nonsquares in Q. This does not assert the existence of a witness. -/
+theorem cross_ratios_nonsquare (n m : ℕ) (hmn : n+5 ≤ m)
+    (heq : (∏ t ∈ Finset.Icc 1 5, (m+t)) = 25*(∏ t ∈ Finset.Icc 1 5, (n+t)))
+    (i j : ℕ) (hi : 1 ≤ i) (hi' : i ≤ 5) (hj : 1 ≤ j) (hj' : j ≤ 5) :
+    ¬IsSquare (((m+j : ℕ) : ℚ)/((n+i : ℕ) : ℚ)) := by
+  intro hs
+  obtain ⟨d,a,b,hd,ha,hb,hl,hh⟩ := square_ratio_representation
+    (n+i) (m+j) (by omega) (by omega) hs
+  exact k5_square_pair_exclusion n m i j d a b hi hi' hj hj' hmn hd ha hb hl hh heq
+
+end Contribution.Erdos686TwentyFive.SquarePair

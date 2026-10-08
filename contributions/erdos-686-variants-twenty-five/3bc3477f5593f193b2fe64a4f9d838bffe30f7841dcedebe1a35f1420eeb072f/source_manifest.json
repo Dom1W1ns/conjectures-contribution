@@ -1,11 +1,12 @@
 {
-  "script_sha256": "da7d3fdda88b27fd040f21d18d245cb512dc3b7eda4d4fdae76781061803368a",
-  "source_module_count": 7,
+  "script_sha256": "1d161e6d4c47a3bf3304f9ce6ae9bdc2aac0c98008f93a6c020f2d20a2d709c4",
+  "source_module_count": 9,
   "original_unique_proof_modules": 6,
   "new_ratio_bridge_modules": 1,
-  "named_declaration_count": 32,
-  "theorem_or_lemma_count": 27,
-  "public_theorem_or_lemma_count": 19,
+  "new_session14_modules": 2,
+  "named_declaration_count": 58,
+  "theorem_or_lemma_count": 45,
+  "public_theorem_or_lemma_count": 37,
   "imports": [
     "import Mathlib.Algebra.BigOperators.Intervals",
     "import Mathlib.Tactic.Linarith",
@@ -20,7 +21,8 @@
     "import Mathlib.Algebra.Divisibility.Basic",
     "import Mathlib.Algebra.Field.ZMod",
     "import Mathlib.LinearAlgebra.Basis.VectorSpace",
-    "import Mathlib.LinearAlgebra.Dimension.Constructions"
+    "import Mathlib.LinearAlgebra.Dimension.Constructions",
+    "import Mathlib.Data.Rat.Lemmas"
   ],
   "canonical_sources": [
     {
@@ -102,6 +104,46 @@
       "body_sha256": "879ee3aadef00c4356b500fdc13f8d83104f914f58be3e3b486c6c95780b00d5",
       "declarations": [
         "Contribution.Erdos686TwentyFive.k6_ratio_exclusion"
+      ]
+    },
+    {
+      "path": "work/session14/SquareCenterExclusion.lean",
+      "sha256": "7feaec092620bfb316c39bf6ceb23548ea35cdc0890ded95cd1198c96610bdc3",
+      "body_sha256": "879c3419d84b74c346e1b7ec8be367d0b196299e286b80fca1a6b227d5a8bdb5",
+      "declarations": [
+        "Contribution.Erdos686TwentyFive.SquareCenter.product",
+        "Contribution.Erdos686TwentyFive.SquareCenter.nearSquare",
+        "Contribution.Erdos686TwentyFive.SquareCenter.square_identity",
+        "Contribution.Erdos686TwentyFive.SquareCenter.product_positive",
+        "Contribution.Erdos686TwentyFive.SquareCenter.less_than_double",
+        "Contribution.Erdos686TwentyFive.SquareCenter.common_square_factor_exclusion"
+      ]
+    },
+    {
+      "path": "work/session14/SquarePairExclusion.lean",
+      "sha256": "b343661ba1b31c693e603265afb3db103a833a315f51bc1adf32bac3839cbd58",
+      "body_sha256": "f7d800db694123aa0165ec9859a7fc1778b966f2336ff1b9f7c4dad5543a91e2",
+      "declarations": [
+        "Contribution.Erdos686TwentyFive.SquarePair.block",
+        "Contribution.Erdos686TwentyFive.SquarePair.bracket",
+        "Contribution.Erdos686TwentyFive.SquarePair.row",
+        "Contribution.Erdos686TwentyFive.SquarePair.check",
+        "Contribution.Erdos686TwentyFive.SquarePair.check_sound",
+        "Contribution.Erdos686TwentyFive.SquarePair.checked_16384",
+        "Contribution.Erdos686TwentyFive.SquarePair.block_mono",
+        "Contribution.Erdos686TwentyFive.SquarePair.finite_five_exclusion",
+        "Contribution.Erdos686TwentyFive.SquarePair.q",
+        "Contribution.Erdos686TwentyFive.SquarePair.r",
+        "Contribution.Erdos686TwentyFive.SquarePair.q_lower",
+        "Contribution.Erdos686TwentyFive.SquarePair.r_bound",
+        "Contribution.Erdos686TwentyFive.SquarePair.near_identity",
+        "Contribution.Erdos686TwentyFive.SquarePair.residual_separation",
+        "Contribution.Erdos686TwentyFive.SquarePair.square_gap",
+        "Contribution.Erdos686TwentyFive.SquarePair.block_upper",
+        "Contribution.Erdos686TwentyFive.SquarePair.common_square_pair_exclusion",
+        "Contribution.Erdos686TwentyFive.SquarePair.k5_square_pair_exclusion",
+        "Contribution.Erdos686TwentyFive.SquarePair.square_ratio_representation",
+        "Contribution.Erdos686TwentyFive.SquarePair.cross_ratios_nonsquare"
       ]
     }
   ],
@@ -265,6 +307,24 @@
       "role": "canonical proof source",
       "canonical_source": "work/session9/QuotientBridge.lean",
       "normalized_without_print_sha256": "ffa70661836919056fe13349f0663ba997d2433fead9f14995ec3f97b0441931"
+    },
+    {
+      "path": "work/session14/SquareCenterExclusion.lean",
+      "sha256": "7feaec092620bfb316c39bf6ceb23548ea35cdc0890ded95cd1198c96610bdc3",
+      "role": "canonical proof source",
+      "canonical_source": "work/session14/SquareCenterExclusion.lean"
+    },
+    {
+      "path": "work/session14/SquarePairExclusion.lean",
+      "sha256": "b343661ba1b31c693e603265afb3db103a833a315f51bc1adf32bac3839cbd58",
+      "role": "canonical proof source",
+      "canonical_source": "work/session14/SquarePairExclusion.lean"
+    },
+    {
+      "path": "work/session14/FiniteFive.lean",
+      "sha256": "02bf03a8c68da6b0f0cd69b98ab1bd1a8677f9c3229e9adcb813a44dd6c4644b",
+      "role": "development subset absorbed in SquarePairExclusion",
+      "canonical_source": "work/session14/SquarePairExclusion.lean"
     }
   ],
   "declarations": [
@@ -457,6 +517,162 @@
     {
       "source": "work/publication686/K6RatioBridge.lean",
       "name": "Contribution.Erdos686TwentyFive.k6_ratio_exclusion",
+      "kind": "theorem",
+      "private": false
+    },
+    {
+      "source": "work/session14/SquareCenterExclusion.lean",
+      "name": "Contribution.Erdos686TwentyFive.SquareCenter.product",
+      "kind": "def",
+      "private": false
+    },
+    {
+      "source": "work/session14/SquareCenterExclusion.lean",
+      "name": "Contribution.Erdos686TwentyFive.SquareCenter.nearSquare",
+      "kind": "def",
+      "private": false
+    },
+    {
+      "source": "work/session14/SquareCenterExclusion.lean",
+      "name": "Contribution.Erdos686TwentyFive.SquareCenter.square_identity",
+      "kind": "lemma",
+      "private": false
+    },
+    {
+      "source": "work/session14/SquareCenterExclusion.lean",
+      "name": "Contribution.Erdos686TwentyFive.SquareCenter.product_positive",
+      "kind": "lemma",
+      "private": false
+    },
+    {
+      "source": "work/session14/SquareCenterExclusion.lean",
+      "name": "Contribution.Erdos686TwentyFive.SquareCenter.less_than_double",
+      "kind": "lemma",
+      "private": false
+    },
+    {
+      "source": "work/session14/SquareCenterExclusion.lean",
+      "name": "Contribution.Erdos686TwentyFive.SquareCenter.common_square_factor_exclusion",
+      "kind": "theorem",
+      "private": false
+    },
+    {
+      "source": "work/session14/SquarePairExclusion.lean",
+      "name": "Contribution.Erdos686TwentyFive.SquarePair.block",
+      "kind": "def",
+      "private": false
+    },
+    {
+      "source": "work/session14/SquarePairExclusion.lean",
+      "name": "Contribution.Erdos686TwentyFive.SquarePair.bracket",
+      "kind": "def",
+      "private": false
+    },
+    {
+      "source": "work/session14/SquarePairExclusion.lean",
+      "name": "Contribution.Erdos686TwentyFive.SquarePair.row",
+      "kind": "def",
+      "private": false
+    },
+    {
+      "source": "work/session14/SquarePairExclusion.lean",
+      "name": "Contribution.Erdos686TwentyFive.SquarePair.check",
+      "kind": "def",
+      "private": false
+    },
+    {
+      "source": "work/session14/SquarePairExclusion.lean",
+      "name": "Contribution.Erdos686TwentyFive.SquarePair.check_sound",
+      "kind": "theorem",
+      "private": false
+    },
+    {
+      "source": "work/session14/SquarePairExclusion.lean",
+      "name": "Contribution.Erdos686TwentyFive.SquarePair.checked_16384",
+      "kind": "lemma",
+      "private": false
+    },
+    {
+      "source": "work/session14/SquarePairExclusion.lean",
+      "name": "Contribution.Erdos686TwentyFive.SquarePair.block_mono",
+      "kind": "theorem",
+      "private": false
+    },
+    {
+      "source": "work/session14/SquarePairExclusion.lean",
+      "name": "Contribution.Erdos686TwentyFive.SquarePair.finite_five_exclusion",
+      "kind": "theorem",
+      "private": false
+    },
+    {
+      "source": "work/session14/SquarePairExclusion.lean",
+      "name": "Contribution.Erdos686TwentyFive.SquarePair.q",
+      "kind": "def",
+      "private": false
+    },
+    {
+      "source": "work/session14/SquarePairExclusion.lean",
+      "name": "Contribution.Erdos686TwentyFive.SquarePair.r",
+      "kind": "def",
+      "private": false
+    },
+    {
+      "source": "work/session14/SquarePairExclusion.lean",
+      "name": "Contribution.Erdos686TwentyFive.SquarePair.q_lower",
+      "kind": "lemma",
+      "private": false
+    },
+    {
+      "source": "work/session14/SquarePairExclusion.lean",
+      "name": "Contribution.Erdos686TwentyFive.SquarePair.r_bound",
+      "kind": "lemma",
+      "private": false
+    },
+    {
+      "source": "work/session14/SquarePairExclusion.lean",
+      "name": "Contribution.Erdos686TwentyFive.SquarePair.near_identity",
+      "kind": "lemma",
+      "private": false
+    },
+    {
+      "source": "work/session14/SquarePairExclusion.lean",
+      "name": "Contribution.Erdos686TwentyFive.SquarePair.residual_separation",
+      "kind": "lemma",
+      "private": false
+    },
+    {
+      "source": "work/session14/SquarePairExclusion.lean",
+      "name": "Contribution.Erdos686TwentyFive.SquarePair.square_gap",
+      "kind": "lemma",
+      "private": false
+    },
+    {
+      "source": "work/session14/SquarePairExclusion.lean",
+      "name": "Contribution.Erdos686TwentyFive.SquarePair.block_upper",
+      "kind": "lemma",
+      "private": false
+    },
+    {
+      "source": "work/session14/SquarePairExclusion.lean",
+      "name": "Contribution.Erdos686TwentyFive.SquarePair.common_square_pair_exclusion",
+      "kind": "theorem",
+      "private": false
+    },
+    {
+      "source": "work/session14/SquarePairExclusion.lean",
+      "name": "Contribution.Erdos686TwentyFive.SquarePair.k5_square_pair_exclusion",
+      "kind": "theorem",
+      "private": false
+    },
+    {
+      "source": "work/session14/SquarePairExclusion.lean",
+      "name": "Contribution.Erdos686TwentyFive.SquarePair.square_ratio_representation",
+      "kind": "lemma",
+      "private": false
+    },
+    {
+      "source": "work/session14/SquarePairExclusion.lean",
+      "name": "Contribution.Erdos686TwentyFive.SquarePair.cross_ratios_nonsquare",
       "kind": "theorem",
       "private": false
     }
