@@ -1,0 +1,157 @@
+{
+  "contribution_id": "f300f0b627040a577cd014051efb359d150817aa2ac6e225a1e2b6eee3a286f9",
+  "payload": {
+    "artifacts": [
+      {
+        "name": "cayley_resolvent_identity.json",
+        "sha256": "8715c5f18a5de693ada771fa9c7d574d4742749abaf1f69f40a0c4844d821b0b",
+        "size": 14046
+      },
+      {
+        "name": "cayley_resolvent_identity.py",
+        "sha256": "b7f5e104cb7e20ffb7d046f370b52f94bcd75c08b8f60c163b2fe7dfbe1f2c0f",
+        "size": 2885
+      },
+      {
+        "name": "declaration_axioms.json",
+        "sha256": "d1fe9a8a0ec601f6069a58df6d74f9c4302bbf6d61f3e6632c70dc37cadb5da9",
+        "size": 17544
+      },
+      {
+        "name": "field36-maximal-order.txt",
+        "sha256": "6f1ee22533b1b7475aa17700aeff7d8608e5586ff96dd0946cf8e435cfd5fc71",
+        "size": 323
+      },
+      {
+        "name": "field36_exact_data.json",
+        "sha256": "1daf9a86ab3e0a488c8ec99f9bd82288ce686fd76274bc70302d753050056d66",
+        "size": 85998
+      },
+      {
+        "name": "field36_reduced.gp",
+        "sha256": "18074e55b0ead20695ba633d3f05d204cad458f153e43682a0bae3abb2b149b8",
+        "size": 83945
+      },
+      {
+        "name": "full_grid_determinant_obstruction.md",
+        "sha256": "4723576ffe2539053fb359a43a00c5b92bdbabd98b1df67826bcf5b8144d9dad",
+        "size": 7368
+      },
+      {
+        "name": "matching-maximal-order.txt",
+        "sha256": "fcae75c87d3ee9392e6456c883d885314670853637f0208f06dc3dfaa2cd3c08",
+        "size": 92
+      },
+      {
+        "name": "matching_exact_data.json",
+        "sha256": "be051bf52fca92b9c0ae73f3c544f18fa83ab8ab3140dc055b3d668cf45ea442",
+        "size": 605561
+      },
+      {
+        "name": "node2_matching_field.gp",
+        "sha256": "fa74a323cf7c79477a8dd3bd29dea77f4f1eb936033369e5db4609cd977d7d2b",
+        "size": 74738
+      },
+      {
+        "name": "node2_minimum_auxiliary_degree.md",
+        "sha256": "58dde12a45a307b29def8f530e182c6e31bf2ee39ce48b57a473d8032af5e7fa",
+        "size": 4553
+      },
+      {
+        "name": "node2_minimum_auxiliary_degree.py",
+        "sha256": "5dab58cede534ac8842d399655c6b8bdf3fe69dd887cdbac1af59b280d708b5e",
+        "size": 6247
+      },
+      {
+        "name": "node2_norm_relation_audit.md",
+        "sha256": "6d524da4492cc1a473b1377a76cd831d586b9a4de29f5099d7db1b58dfb9ea0a",
+        "size": 9781
+      },
+      {
+        "name": "node2_norm_relation_audit.py",
+        "sha256": "9191cb1d795d3fa746d80e2113d5885bda2e50139c5eae4121b4f357559456e3",
+        "size": 3892
+      },
+      {
+        "name": "node2_small_models.json",
+        "sha256": "7f113c64fb3c605ca9ba5ad657c5f580b3a48cc95394a98c9362bea495bfcb2f",
+        "size": 22984
+      },
+      {
+        "name": "odd_norm_relation_certificate.json",
+        "sha256": "f2653183ef7adae987d345b22ace3661560bee135800e3894ae35a0225a8786c",
+        "size": 42946
+      },
+      {
+        "name": "quartic_cover_exact_data.json",
+        "sha256": "a9a35f917fa1527bee7dc093081f6d041f81aca7291a2aa6fd4719535970e04b",
+        "size": 9557
+      },
+      {
+        "name": "quartic_cover_verify.py",
+        "sha256": "b035159a2d9a021f55b3beb5a67586573c45790e05f219182244a491328eba9a",
+        "size": 2318
+      },
+      {
+        "name": "research-status.md",
+        "sha256": "6d6187c08b7636a23f875c5dc906c7e3ffb3cacb75603d06a5c40a7403938d1d",
+        "size": 5341
+      },
+      {
+        "name": "script.lean",
+        "sha256": "da7d3fdda88b27fd040f21d18d245cb512dc3b7eda4d4fdae76781061803368a",
+        "size": 21259
+      },
+      {
+        "name": "source_manifest.json",
+        "sha256": "168fd3a1fa71be331b6b481a9daec774f48a47bbb3477cb1a16f843a8c11c3dd",
+        "size": 19538
+      },
+      {
+        "name": "sources.md",
+        "sha256": "eb9230c6f61c0aa2beeb007a8fbcf959f4000c24e7da11cbd3e23d6da7a0e0ef",
+        "size": 4890
+      },
+      {
+        "name": "theorem-inventory.md",
+        "sha256": "f54d4a060ed0c5da7b76c828a1fcaa54aeb68752cbd569d995f16f28f4c9ae0e",
+        "size": 3015
+      },
+      {
+        "name": "verification.json",
+        "sha256": "a469e5efb4bd7e816172da1ef825f5c8066bc03f160806a27a65c3e6e9ff40d4",
+        "size": 715
+      },
+      {
+        "name": "verify_field36.py",
+        "sha256": "a77bdc737b59a1aa1f9913e83a20e9c1b7e35686d022ecacbc6bf55859da3f62",
+        "size": 2308
+      },
+      {
+        "name": "verify_matching.py",
+        "sha256": "c19bb5102183f42c830053dfdfec50df8cd279db390746260ed3161ebee1ab21",
+        "size": 1508
+      },
+      {
+        "name": "verify_odd_norm_relation.py",
+        "sha256": "6a70ffce32f0773b2b5a5257e1c7ec1db507575986d9d94d9071d550abe8a209",
+        "size": 3018
+      }
+    ],
+    "author": "257f2a80475e6ab0f5c068a44e45625c20ca9015da6953bbd575c4c35295cff3",
+    "kind": "partial-proof",
+    "mode": "either",
+    "parents": [],
+    "reward": {
+      "coldkey": "5DcvqX88bHFnXwY9JovVsaTkQrBkwnXzLLuFBqpK3ggqLX1C",
+      "hotkey": "5DJ6XRWZFZ8b3kDbDEzNcMkaAjaMppa4rZz1S1H6Vpt2wDiJ"
+    },
+    "reward_target_id": "fc-target:Erdos686.erdos_686.variants.twenty_five",
+    "schema_version": 1,
+    "target": "erdos-686-variants-twenty-five",
+    "tasks_commit": "6a786f997e18e8f095762a2830d191b7e25e505e",
+    "title": "Multiplier25: length6 exclusion and prime-transport and quotient proof interfaces"
+  },
+  "reward_signature": "68269fa47e402b8be87b4de86fb02af9bbb409e2b17c1914f683b2c825180a60f1ca36fb685077fbdc0d591fe619e38e037d89fd948c61f64a6d7477d0b4e28b",
+  "signature": "1bca1879a773d1c0d8f5421ec209a6a03ef80a1f9f5c44872d33cf624dc3d5ef850bd1944a9d51d8be1791ff36b5393332d7ed568f6e7265df5749cb0169890e"
+}

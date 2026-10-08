@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "script_sha256": "da7d3fdda88b27fd040f21d18d245cb512dc3b7eda4d4fdae76781061803368a",
+  "compiler": "Lean 4.33.1",
+  "compiler_commit": "819816b2e0a3bf405af45ae5c7af2491d8f5bee6",
+  "original_unique_modules_preserved": 6,
+  "new_ratio_bridge_modules": 1,
+  "workspace_lean_files_classified": 23,
+  "named_source_declarations": 32,
+  "all_elaborated_declarations_audited": 67,
+  "public_theorems": 19,
+  "axiom_union": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "all_named_declarations_covered": true,
+  "all_generated_declarations_covered": true,
+  "new_axioms_or_unsafe_or_partial_declarations": false,
+  "scope": "partial contribution; no k=5 or all-length proof"
+}
