@@ -8,6 +8,8 @@ Task bundles: [`counterexample`](https://github.com/conjectures-io/conjectures-t
 
 > If $n(n+1)=2^k3^lm$, where $(m,6)=1$, then is it true that $\limsup_{n\to \infty} \frac{2^k3^l}{n\log n}=\infty$?
 
-## Contributions (0)
+## Contributions (1)
 
-None yet. See [`guidelines.md`](../../guidelines.md) for how to add one.
+| # | Added | Contribution | Title | Kind | Mode | Declarations | Hotkey |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 | 2026-10-08 | [`0f9156c4c958`](0f9156c4c958cdd70b56e9d21649eff94427e380b802fd187941fe8b7a9686ca/) | Erdos 933: divisibility criterion reducing the limsup to finding n with large 2^a 3^b dividing n(n+1) | lemma | formalized | `Contribution.Erdos933.limsup_eq_top_of_frequently_ge`, `Contribution.Erdos933.pow_mul_pow_le_smooth`, `Contribution.Erdos933.frequently_ge_of_dvd`, `Contribution.Erdos933.limsup_eq_top_of_dvd` +1 | `5Gxxng…pjDiGY` |
