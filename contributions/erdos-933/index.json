@@ -1,0 +1,37 @@
+{
+  "contribution_count": 1,
+  "contributions": [
+    {
+      "added": "2026-10-08",
+      "artifacts": [
+        "records.md",
+        "records.py",
+        "reduction.md",
+        "script.lean",
+        "sources.md"
+      ],
+      "author": "b31e341defbffb126c639c0ff4b4868317414011a5735efc1b403e6db217dd70",
+      "coldkey": "5GbKjM1e88X97XveJgcv3G54ALtaneKX2mieBcrqCS9oQD4G",
+      "contribution_id": "0f9156c4c958cdd70b56e9d21649eff94427e380b802fd187941fe8b7a9686ca",
+      "declarations": [
+        "Contribution.Erdos933.limsup_eq_top_of_frequently_ge",
+        "Contribution.Erdos933.pow_mul_pow_le_smooth",
+        "Contribution.Erdos933.frequently_ge_of_dvd",
+        "Contribution.Erdos933.limsup_eq_top_of_dvd",
+        "Contribution.Erdos933.erdos_933_true_of_dvd"
+      ],
+      "hotkey": "5GxxngHsWTnh42Cvwiv6YwGGpentqnSYWXKpyxb14KpjDiGY",
+      "kind": "lemma",
+      "mode": "formalized",
+      "parents": [],
+      "path": "0f9156c4c958cdd70b56e9d21649eff94427e380b802fd187941fe8b7a9686ca/",
+      "tasks_commit": "6a786f997e18e8f095762a2830d191b7e25e505e",
+      "title": "Erdos 933: divisibility criterion reducing the limsup to finding n with large 2^a 3^b dividing n(n+1)"
+    }
+  ],
+  "open": true,
+  "problem_id": "fc-6a786f99-erdos933-erdos-933-fb6e201c763d9dc0f82b8b59e200e0e8-problem",
+  "reward_target_id": "fc-target:Erdos933.erdos_933",
+  "schema_version": 2,
+  "target": "erdos-933"
+}
