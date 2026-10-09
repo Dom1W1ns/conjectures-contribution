@@ -1,3 +1,36 @@
+# Complete-factor stencil extension to the pending Erdős686 contribution
+
+This revision adds a focused, AI-assisted formalization from research sessions20
+and21. The exact statements, complete factorization hypotheses, concrete use sites
+and limitations are in [stencil-guide.md](stencil-guide.md). The standalone Lean
+file preserves the earlier contribution and adds the dense reduction,
+complementary divisor, coefficient-dependent bound and unscaled special-case
+exclusion. Only their necessary supporting lemmas are added.
+
+These results were not present in the previous PR head
+[4a236cb](https://github.com/Dom1W1ns/conjectures-contribution/commit/4a236cb9e9bfbcdf79bba42df5c00657fb5b8d0e).
+The target's canonical index still has no published contribution at base
+`4ed0217e9791408469af21821d37e3a0aa31bef1`. This replaces the previous **unmerged**
+record `3bc3477f5593f193b2fe64a4f9d838bffe30f7841dcedebe1a35f1420eeb072f` in the
+same [PR141](https://github.com/conjectures-io/conjectures-contribution/pull/141).
+That record and the earlier record remain in Git history. No published record is
+modified, no duplicate PR is opened, and no separate credit is sought for retained
+proofs. `parents` remains empty because there is no published parent to name.
+
+The new proofs use polynomial arithmetic, order and coprimality from the pinned
+[Mathlib](https://github.com/leanprover-community/mathlib4/tree/0df444a360eaa60ab8c11dca51a86af692955474).
+The formalization and local elimination were developed in this research; no
+worldwide mathematical novelty or literature-priority determination is claimed.
+The session20 exclusion now reuses the session21 dense reduction, instead of
+repeating the same elimination. Three implementation lemmas and the elementary
+contradiction are private. The selected source mapping is in source_manifest.json.
+
+**The full target remains unresolved.** `T=2*d^2*e*c` retains unbounded factors.
+The external restricted exclusion does not add remaining k5 coverage, and no
+external finite search is a Lean premise. Recognition or payment is not claimed.
+
+## Earlier contribution provenance (retained)
+
 # Expanded contribution: verified length-five square-pair exclusions
 
 This revision adds two completed proof modules to the six research modules and the ratio bridge already collected here. The new proofs were developed with AI assistance in this research session. They use elementary polynomial identities, integer order, rational-square arithmetic, and a kernel-checked finite bracketing certificate; they do not use the missing class-group or rank certificates.
@@ -18,7 +51,7 @@ The full k=5 problem, all 16 covering cases, and the all-length bounty remain un
 
 # Provenance, use, and limits
 
-This is one combined partial contribution for the [multiplier-25 target](https://conjectures.io/problems/erdos686-erdos-686-variants-twenty-five), prepared by GitHub user Dom1W1ns with AI assistance. It is not a solution of the existential statement over all lengths. The formal contribution collects every completed original Lean module from this research session series; diagnostic copies are consolidated rather than submitted as duplicate claims.
+This is one combined partial contribution for the [multiplier-25 target](https://conjectures.io/problems/erdos686-erdos-686-variants-twenty-five), prepared by GitHub user Dom1W1ns with AI assistance. It is not a solution of the existential statement over all lengths. The earlier formal contribution collected its completed original Lean modules; this revision adds only the selected stencil API, without importing diagnostic copies.
 
 ## Concrete use by a later solver
 

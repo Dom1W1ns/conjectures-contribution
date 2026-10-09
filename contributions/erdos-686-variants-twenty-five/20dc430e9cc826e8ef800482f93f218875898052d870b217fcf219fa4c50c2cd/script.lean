@@ -1,17 +1,3 @@
-/-
-Partial contribution concerning Erdos problem 686, multiplier 25.
-
-This file includes every completed unique proof module from this research.
-It proves the k=6 exclusion and the unbounded conditional k=5 exclusion when
-any cross-block term ratio is a rational square, plus necessary conditions
-and algebraic bridges. Neither the complete k=5 case nor all-k bounty is solved.
-No numerical rank upper bound or class-group completeness is asserted.
-
-Proof bodies and namespaces are preserved, imports deduplicated, diagnostic
-commands omitted. Supporting research and attribution are supplied separately.
--/
-
-
 import Mathlib.Algebra.BigOperators.Intervals
 import Mathlib.Tactic.Linarith
 import Mathlib.Tactic.NormNum
@@ -27,6 +13,24 @@ import Mathlib.Algebra.Field.ZMod
 import Mathlib.LinearAlgebra.Basis.VectorSpace
 import Mathlib.LinearAlgebra.Dimension.Constructions
 import Mathlib.Data.Rat.Lemmas
+import Mathlib.Tactic.LinearCombination
+
+/-
+Partial contribution concerning Erdos problem 686, multiplier 25.
+
+This file preserves the earlier partial contribution and adds complete-factor
+stencil results. The new dense bound retains unrestricted coefficients.
+It proves the k=6 exclusion and the unbounded conditional k=5 exclusion when
+any cross-block term ratio is a rational square, plus necessary conditions
+and algebraic bridges. Neither the complete k=5 case nor all-k bounty is solved.
+No numerical rank upper bound or class-group completeness is asserted.
+
+The retained proofs are unchanged. The new stencil module reuses its dense
+reduction for the unscaled special case. Attribution and exact scope are supplied
+separately; no external computation is a Lean premise.
+-/
+
+
 
 /- Original module: work/session4/K6.lean -/
 
@@ -933,3 +937,350 @@ theorem cross_ratios_nonsquare (n m : ℕ) (hmn : n+5 ≤ m)
   exact k5_square_pair_exclusion n m i j d a b hi hi' hj hj' hmn hd ha hb hl hh heq
 
 end Contribution.Erdos686TwentyFive.SquarePair
+
+/- Complete-factor stencil API; sessions20-21. -/
+
+set_option maxHeartbeats 1000000
+namespace Contribution.Erdos686TwentyFive.FactorStencil
+
+/-- Reduce four exact consecutive differences with all omitted factors retained.
+For the intended use, the lower terms are `a*z*t*u`, `b*v*w`, `c*r*x`,
+and the upper terms are `d*v*u`, `e*z*r*w`, `f*x*y`. The six coefficients
+are arbitrary positive integers; none is assumed to divide the multiplier25. -/
+theorem dense_stencil_reduction (a b c d e f z t u v w r x y : ℤ)
+    (ha : 0 < a) (hb : 0 < b) (_hc : 0 < c) (hd : 0 < d) (_he : 0 < e) (_hf : 0 < f)
+    (hz : 0 < z) (ht : 0 < t) (hu : 0 < u) (hv : 0 < v)
+    (hw : 0 < w) (hr : 0 < r) (hx : 0 < x) (_hy : 0 < y)
+    (huw : b * w < d * u)
+    (h1 : b * v * w = a * z * t * u + 1) (h2 : e * z * r * w = d * v * u + 1)
+    (h3 : c * r * x = b * v * w + 1) (h4 : f * x * y = e * z * r * w + 1) :
+    ∃ q h j : ℤ, 0 < q ∧ 0 < h ∧ 0 < j ∧
+      2 * q = j * x ∧ q * h < d * e * z ∧ IsCoprime x z ∧
+      b * d * c ^ 2 * q * x ^ 2 = a ^ 2 * b * e * z ^ 3 * h * t ^ 2 + (d * e * z - q * h) ^ 2 ∧
+      (d * e * z - q * h) * r = a * b * z * t + 2 * b * q * w ∧
+      d * c * x = (d * e * z - q * h) * w - a * h * z * t ∧ d * u = b * w + r * h ∧
+      q * u * w = d * v * u - b * v * w + 1 := by
+  let q := d * b * v ^ 2 - e * a * z ^ 2 * t * r
+  have hqw : w * q = d * v - a * z * t := by
+    dsimp [q]
+    linear_combination d * v * h1 - a * z * t * h2
+  have hqu : q * u = e * z * r - b * v := by
+    dsimp [q]
+    linear_combination e * z * r * h1 - b * v * h2
+  let l := d * u - b * w
+  have hl : 0 < l := by dsimp [l]; omega
+  have hquwl : q * u * w = v * l + 1 := by
+    dsimp [l]
+    linear_combination w * hqu + h2
+  have hq : 0 < q := by
+    by_contra hn
+    have hn' : q ≤ 0 := by omega
+    have hnp := mul_nonpos_of_nonpos_of_nonneg
+      (mul_nonpos_of_nonpos_of_nonneg hn' hu.le) hw.le
+    nlinarith [mul_pos hv hl]
+  have hqw2 : b * q * w ^ 2 - a * z * t * l = d := by
+    dsimp [l]
+    linear_combination b * w * hqw + d * h1
+  have hqu2 : d * q * u ^ 2 - e * z * r * l = b := by
+    dsimp [l]
+    linear_combination d * u * hqu + b * h2
+  have hquw : q * u * w = r * (e * z * w - c * x) + 1 := by
+    linear_combination w * hqu + h3
+  have hdivl : r ∣ q * u * l := by
+    refine ⟨e * z * l - b * e * z * w + b * c * x, ?_⟩
+    dsimp [l] at hqu2 ⊢
+    linear_combination hqu2 - b * hquw
+  have hrcp : IsCoprime r (q * u) := by
+    refine ⟨-e * z * w + c * x, w, ?_⟩
+    linear_combination hquw
+  obtain ⟨h, heqh⟩ := hrcp.dvd_of_dvd_mul_left hdivl
+  have hh : 0 < h := by
+    by_contra hn
+    have hn' : h ≤ 0 := by omega
+    nlinarith [mul_nonpos_of_nonneg_of_nonpos hr.le hn']
+  have hau : d * u = b * w + r * h := by dsimp [l] at heqh; linarith
+  let A := d * e * z - q * h
+  have hAr : A * r = a * b * z * t + 2 * b * q * w := by
+    dsimp [A]
+    linear_combination -d * hqu - b * hqw + q * hau
+  have hA : 0 < A := by
+    by_contra hn
+    have hn' : A ≤ 0 := by omega
+    have hp : 0 < a * b * z * t + 2 * b * q * w := by positivity
+    nlinarith [mul_nonpos_of_nonpos_of_nonneg hn' hr.le]
+  have hgap : q * h < d * e * z := by dsimp [A] at hA; omega
+  have hqw3 : b * q * w ^ 2 - a * z * t * r * h = d := by
+    rw [heqh] at hqw2
+    simpa only [mul_assoc] using hqw2
+  have hbot : c * r * x = a * z * t * u + 2 := by linarith
+  have hax : d * c * x = A * w - a * h * z * t := by
+    have heq : r * (d * c * x - A * w + a * h * z * t) = 0 := by
+      linear_combination d * hbot + a * z * t * hau - w * hAr - 2 * hqw3
+    have heq' := (mul_eq_zero.mp heq).resolve_left (ne_of_gt hr)
+    linarith
+  have hK : b * A * q * w ^ 2 - 2 * a * b * z * q * h * t * w - a ^ 2 * b * z ^ 2 * h * t ^ 2 = d * A := by
+    linear_combination A * hqw3 + a * z * t * h * hAr
+  have hnorm : b * d * c ^ 2 * q * x ^ 2 = a ^ 2 * b * e * z ^ 3 * h * t ^ 2 + (d * e * z - q * h) ^ 2 := by
+    have heq : d * (b * d * c ^ 2 * q * x ^ 2 - a ^ 2 * b * e * z ^ 3 * h * t ^ 2-(d * e * z - q * h) ^ 2) = 0 := by
+      dsimp [A] at hax hK
+      linear_combination b * q * (d * c * x + (d * e * z - q * h) * w - a * z * h * t) * hax + (d * e * z - q * h) * hK
+    have heq' := (mul_eq_zero.mp heq).resolve_left (ne_of_gt hd)
+    linarith
+  have hxw : IsCoprime x w := by
+    refine ⟨c * r, -b * v, ?_⟩
+    linear_combination h3
+  have hdx : x ∣ q * u * w := by
+    refine ⟨f * y - c * r, ?_⟩
+    linear_combination w * hqu - h4 + h3
+  have hdqu : x ∣ q * u := hxw.dvd_of_dvd_mul_right hdx
+  have hd2q : x ∣ 2 * q := by
+    obtain ⟨s, hs⟩ := hdqu
+    refine ⟨q * c * r - a * z * t * s, ?_⟩
+    linear_combination -q * hbot - a * z * t * hs
+  have hxz : IsCoprime x z := by
+    refine ⟨f * y, -e * r * w, ?_⟩
+    linear_combination h4
+  obtain ⟨j, hj⟩ := hd2q
+  have hjpos : 0 < j := by
+    by_contra hn
+    have hn' : j ≤ 0 := by omega
+    nlinarith [mul_nonpos_of_nonneg_of_nonpos hx.le hn']
+  refine ⟨q, h, j, hq, hh, hjpos, ?_, hgap, hxz, hnorm, hAr, hax, hau, ?_⟩
+  · linarith
+  · dsimp [l] at hquwl
+    linear_combination hquwl
+
+/-- Exact cubic identity with the formerly omitted coefficients explicit. -/
+private theorem dense_stencil_cubic_identity (a b c d e z h t x j L : ℤ)
+    (hL : L = 2 * d * e * z - j * h * x)
+    (he : 2 * b * d * c ^ 2 * j * x ^ 3 = 4 * a ^ 2 * b * e * h * t ^ 2 * z ^ 3 + L ^ 2) :
+    4 * b * e * j * ((2 * d ^ 2 * e * c) ^ 2-(a * j * h ^ 2 * t) ^ 2) * x ^ 3 =
+      12 * a ^ 2 * b * e * j ^ 2 * h ^ 3 * t ^ 2 * x ^ 2 * L +
+      12 * a ^ 2 * b * e * j * h ^ 2 * t ^ 2 * x * L ^ 2 +
+      4 * a ^ 2 * b * e * h * t ^ 2 * L ^ 3 + (2 * d * e) ^ 3 * L ^ 2 := by
+  subst L
+  linear_combination (2 * d * e) ^ 3 * he
+
+/-- Positivity bounds parameters relative to the omitted cofactors, not uniformly. -/
+private theorem dense_stencil_parameter_bound (a b c d e z h t x j L : ℤ)
+    (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (hd : 0 < d) (hepos : 0 < e)
+    (hh : 0 < h) (ht : 0 < t) (hx : 0 < x) (hj : 0 < j) (hLp : 0 < L)
+    (hL : L = 2 * d * e * z - j * h * x)
+    (he : 2 * b * d * c ^ 2 * j * x ^ 3 = 4 * a ^ 2 * b * e * h * t ^ 2 * z ^ 3 + L ^ 2) :
+    a * j * h ^ 2 * t < 2 * d ^ 2 * e * c := by
+  have hid := dense_stencil_cubic_identity a b c d e z h t x j L hL he
+  have hp : 0 < 12 * a ^ 2 * b * e * j ^ 2 * h ^ 3 * t ^ 2 * x ^ 2 * L +
+      12 * a ^ 2 * b * e * j * h ^ 2 * t ^ 2 * x * L ^ 2 +
+      4 * a ^ 2 * b * e * h * t ^ 2 * L ^ 3 + (2 * d * e) ^ 3 * L ^ 2 := by positivity
+  have hprod : 0 < 4 * b * e * j * ((2 * d ^ 2 * e * c) ^ 2-(a * j * h ^ 2 * t) ^ 2) * x ^ 3 := by linarith
+  have hdiff : 0 < (2 * d ^ 2 * e * c) ^ 2-(a * j * h ^ 2 * t) ^ 2 := by
+    by_contra hn
+    have hn' : (2 * d ^ 2 * e * c) ^ 2-(a * j * h ^ 2 * t) ^ 2 ≤ 0 := by omega
+    have hp' := mul_nonpos_of_nonneg_of_nonpos (by positivity : 0 ≤ 4 * b * e * j) hn'
+    have hp'' := mul_nonpos_of_nonpos_of_nonneg hp' (by positivity : 0 ≤ x ^ 3)
+    linarith
+  have hT : 0 < 2 * d ^ 2 * e * c := by positivity
+  have hS : 0 < a * j * h ^ 2 * t := by positivity
+  nlinarith
+
+/-- Primitivity gives a positive integer complementary divisor.
+With `L = 2*d*e*z - j*h*x`, `T = 2*d^2*e*c`, and `S = a*j*h^2*t`,
+the final identity is `K*L = 2*(T+S)`. No absolute bound on `T` is asserted. -/
+theorem dense_stencil_complementary_divisor (a c d e z h t x j w q L : ℤ)
+    (hc : 0 < c) (hd : 0 < d) (hz : 0 < z) (hh : 0 < h) (hj : 0 < j) (hw : 0 < w)
+    (hcp : IsCoprime x z) (hq : 2 * q = j * x)
+    (hax : d * c * x = (d * e * z - q * h) * w - a * h * z * t)
+    (hL : L = 2 * d * e * z - j * h * x) :
+    ∃ K : ℤ, 0 < K ∧ z * K = 2 * d * c + j * h * w ∧
+      x * K = 2 * (d * e * w - a * h * t) ∧ K * L = 2 * (2 * d ^ 2 * e * c + a * j * h ^ 2 * t) := by
+  have hid : x * (2 * d * c + j * h * w) = 2 * z * (d * e * w - a * h * t) := by
+    linear_combination 2 * hax - h * w * hq
+  have hdiv : z ∣ x * (2 * d * c + j * h * w) := by
+    refine ⟨2 * (d * e * w - a * h * t), ?_⟩
+    linear_combination hid
+  obtain ⟨K, hK⟩ := hcp.symm.dvd_of_dvd_mul_left hdiv
+  have hKpos : 0 < K := by
+    by_contra hn
+    have hn' : K ≤ 0 := by omega
+    have hp : 0 < 2 * d * c + j * h * w := by positivity
+    nlinarith [mul_nonpos_of_nonneg_of_nonpos hz.le hn']
+  have hxK : x * K = 2 * (d * e * w - a * h * t) := by
+    have hz0 : z * (x * K - 2 * (d * e * w - a * h * t)) = 0 := by
+      linear_combination hid - x * hK
+    exact sub_eq_zero.mp ((mul_eq_zero.mp hz0).resolve_left (ne_of_gt hz))
+  refine ⟨K, hKpos, by linarith, hxK, ?_⟩
+  linear_combination K * hL - 2 * d * e * hK - j * h * hxK
+
+/-- This is effective only when T itself has an independent bound. -/
+private theorem linear_divisor_bound (K L S T : ℤ)
+    (hK : 0 < K) (hL : 0 < L) (hST : S < T)
+    (he : K * L = 2 * (T + S)) : L < 4 * T := by
+  have hK1 : 1 ≤ K := by omega
+  nlinarith [mul_nonneg (by omega : 0 ≤ K - 1) hL.le]
+
+/-- Assembled bound from the complete six-term equations. The coefficients
+    a,b,c,d,e,f are unrestricted, so this is not an absolute height bound. -/
+theorem dense_stencil_linear_bound (a b c d e f z t u v w r x y : ℤ)
+    (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (hd : 0 < d) (he : 0 < e) (hf : 0 < f)
+    (hz : 0 < z) (ht : 0 < t) (hu : 0 < u) (hv : 0 < v)
+    (hw : 0 < w) (hr : 0 < r) (hx : 0 < x) (hy : 0 < y)
+    (huw : b * w < d * u)
+    (h1 : b * v * w = a * z * t * u + 1) (h2 : e * z * r * w = d * v * u + 1)
+    (h3 : c * r * x = b * v * w + 1) (h4 : f * x * y = e * z * r * w + 1) :
+    ∃ q h j K L : ℤ, 0 < q ∧ 0 < h ∧ 0 < j ∧ 0 < K ∧ 0 < L ∧
+      2 * q = j * x ∧ L = 2 * (d * e * z - q * h) ∧ a * j * h ^ 2 * t < 2 * d ^ 2 * e * c ∧
+      K * L = 2 * (2 * d ^ 2 * e * c + a * j * h ^ 2 * t) ∧ L < 8 * d ^ 2 * e * c := by
+  obtain ⟨q, h, j, hq, hh, hj, hqx, hgap, hcp, hnorm, _hAr, hax, _hau, _hquw⟩ :=
+    dense_stencil_reduction a b c d e f z t u v w r x y
+      ha hb hc hd he hf hz ht hu hv hw hr hx hy huw h1 h2 h3 h4
+  let L := 2 * (d * e * z - q * h)
+  have hLp : 0 < L := by dsimp [L]; omega
+  have hL : L = 2 * d * e * z - j * h * x := by
+    dsimp [L]
+    linear_combination -h * hqx
+  have hcubic : 2 * b * d * c ^ 2 * j * x ^ 3 = 4 * a ^ 2 * b * e * h * t ^ 2 * z ^ 3 + L ^ 2 := by
+    dsimp [L]
+    linear_combination 4 * hnorm - 2 * b * d * c ^ 2 * x ^ 2 * hqx
+  have hST := dense_stencil_parameter_bound a b c d e z h t x j L
+    ha hb hc hd he hh ht hx hj hLp hL hcubic
+  obtain ⟨K, hK, _hzK, _hxK, hKL⟩ := dense_stencil_complementary_divisor a c d e z h t x j w q L
+    hc hd hz hh hj hw hcp hqx hax hL
+  have hbound := linear_divisor_bound K L (a * j * h ^ 2 * t) (2 * d ^ 2 * e * c) hK hLp hST hKL
+  exact ⟨q, h, j, K, L, hq, hh, hj, hK, hLp, hqx, rfl, hST, hKL, by nlinarith⟩
+
+
+/-- The arithmetic obstruction obtained from the consecutive six-term stencil. -/
+private theorem reduced_system_impossible (q z h t x : ℤ)
+    (hq : 0 < q) (hz : 0 < z) (hh : 0 < h) (ht : 0 < t) (hx : 0 < x)
+    (hgap : q * h < z) (hdiv : x ∣ 2 * q) (hcp : IsCoprime x z)
+    (hnorm : q * x ^ 2 = z ^ 3 * h * t ^ 2 + (z - q * h) ^ 2) : False := by
+  have hxl : x ≤ 2 * q := Int.le_of_dvd (by positivity) hdiv
+  have hs : x ^ 2 ≤ 4 * q ^ 2 := by nlinarith [mul_nonneg (by linarith : 0 ≤ 2 * q - x) (by positivity : 0 ≤ 2 * q + x)]
+  have hqs := mul_le_mul_of_nonneg_left hs hq.le
+  have hbound : z ^ 3 * h * t ^ 2 < 4 * q ^ 3 := by
+    nlinarith [sq_pos_of_pos (sub_pos.mpr hgap)]
+  have hh1 : 1 ≤ h := by omega
+  have ht1 : 1 ≤ t := by omega
+  have htt : 1 ≤ h * t ^ 2 := by nlinarith [mul_nonneg (by omega : 0 ≤ h - 1) (sq_nonneg t)]
+  have hz3 : 0 < z ^ 3 := by positivity
+  have hcoarse : z ^ 3 < 4 * q ^ 3 := by
+    nlinarith [mul_nonneg hz3.le (by linarith : 0 ≤ h * t ^ 2 - 1)]
+  have hzlt : z < 2 * q := by
+    by_contra h
+    have hp : (2 * q) ^ 3 ≤ z ^ 3 := pow_le_pow_left₀ (by positivity) (by linarith) 3
+    nlinarith [pow_pos hq 3]
+  have hhone : h = 1 := by
+    by_contra hne
+    have htwo : 2 ≤ h := by omega
+    nlinarith [mul_nonneg hq.le (by omega : 0 ≤ h - 2)]
+  subst h
+  have hqz : q < z := by simpa using hgap
+  have hqz3 : q ^ 3 ≤ z ^ 3 := pow_le_pow_left₀ hq.le hqz.le 3
+  have htone : t = 1 := by
+    by_contra hne
+    have htwo : 2 ≤ t := by omega
+    have hp : 0 ≤ t ^ 2 - 4 := by nlinarith
+    nlinarith [mul_nonneg hz3.le hp]
+  subst t
+  norm_num only [mul_one, one_pow] at hnorm
+  have hxq : q < x := by
+    by_contra h
+    have hs2 : x ^ 2 ≤ q ^ 2 := by nlinarith [mul_nonneg (by linarith : 0 ≤ q - x) (by positivity : 0 ≤ q + x)]
+    have hqhs := mul_le_mul_of_nonneg_left hs2 hq.le
+    nlinarith [sq_pos_of_pos (sub_pos.mpr hqz)]
+  have hxeq : x = 2 * q := by
+    obtain ⟨b, hb⟩ := hdiv
+    have hbpos : 0 < b := by
+      by_contra hne
+      have hle : b ≤ 0 := by omega
+      nlinarith [mul_nonpos_of_nonneg_of_nonpos hx.le hle]
+    have hb1 : b = 1 := by
+      by_contra hne
+      have hb2 : 2 ≤ b := by omega
+      nlinarith [mul_nonneg hx.le (by omega : 0 ≤ b - 2)]
+    rw [hb1] at hb
+    linarith
+  have hqcp : IsCoprime q z := hcp.of_isCoprime_of_dvd_left ⟨2, by linarith⟩
+  let a := z - q
+  have ha : 0 < a := by dsimp [a]; linarith
+  have haq : a < q := by dsimp [a]; linarith
+  have hca : IsCoprime q a := by
+    obtain ⟨f, g, hfg⟩ := hqcp
+    refine ⟨f + g, g, ?_⟩
+    dsimp [a]
+    linear_combination hfg
+  have hd : q ∣ a ^ 2 * (a + 1) := by
+    refine ⟨3 * q ^ 2 - 3 * q * a - 3 * a ^ 2, ?_⟩
+    dsimp [a]
+    rw [hxeq] at hnorm
+    linear_combination -hnorm
+  have hcap : IsCoprime q (a ^ 2) := by simpa [pow_two] using hca.mul_right hca
+  have had : q ∣ a + 1 := hcap.dvd_of_dvd_mul_left hd
+  have hale : q ≤ a + 1 := Int.le_of_dvd (by omega) had
+  have heqa : a + 1 = q := by omega
+  have heqz : z = 2 * q - 1 := by dsimp [a] at heqa; omega
+  have hquadratic : 4 * q ^ 2 - 11 * q + 4 = 0 := by
+    rw [hxeq, heqz] at hnorm
+    have hhq : q * (4 * q ^ 2 - 11 * q + 4) = 0 := by linear_combination -hnorm
+    exact (mul_eq_zero.mp hhq).resolve_left (ne_of_gt hq)
+  have hq2 : 2 ≤ q := by omega
+  by_cases hqeq : q = 2
+  · norm_num [hqeq] at hquadratic
+  · have hq3 : 3 ≤ q := by omega
+    nlinarith [mul_nonneg hq.le (by omega : 0 ≤ q - 3)]
+
+
+/-- The unscaled complete six-term stencil has no positive integer solution.
+This excludes the stated factorization, without a height bound. -/
+theorem consecutive_stencil_impossible (z t u v w r x y : ℤ)
+    (hz : 0 < z) (ht : 0 < t) (hu : 0 < u) (hv : 0 < v)
+    (hw : 0 < w) (hr : 0 < r) (hx : 0 < x) (hy : 0 < y)
+    (huw : w < u)
+    (h1 : v * w = z * t * u + 1) (h2 : z * r * w = v * u + 1)
+    (h3 : r * x = v * w + 1) (h4 : x * y = z * r * w + 1) : False := by
+  obtain ⟨q, h, j, hq, hh, _hj, hjx, hgap, hcp, hnorm, _hAr, _hax, _hau, _hquw⟩ :=
+    dense_stencil_reduction 1 1 1 1 1 1 z t u v w r x y
+      (by norm_num) (by norm_num) (by norm_num) (by norm_num) (by norm_num) (by norm_num)
+      hz ht hu hv hw hr hx hy (by simpa using huw)
+      (by simpa using h1) (by simpa using h2) (by simpa using h3) (by simpa using h4)
+  apply reduced_system_impossible q z h t x hq hz hh ht hx
+    (by simpa using hgap) ⟨j, by linarith⟩ hcp
+  simpa using hnorm
+
+/-- Explicit position-preserving specialization to the selected k=5 matrix template. -/
+theorem labeled_pattern_impossible (n m z t u v w r x y : ℤ)
+    (hz : 0 < z) (ht : 0 < t) (hu : 0 < u) (hv : 0 < v)
+    (hw : 0 < w) (hr : 0 < r) (hx : 0 < x) (hy : 0 < y)
+    (hnm : n < m)
+    (hA1 : z * t * u = n + 1) (hA2 : v * w = n + 2) (hA3 : r * x = n + 3)
+    (hB2 : v * u = m + 2) (hB3 : z * r * w = m + 3) (hB4 : x * y = m + 4) : False := by
+  have huw : w < u := by
+    by_contra h
+    have hh : 0 ≤ w - u := by omega
+    nlinarith [mul_nonneg hv.le hh]
+  exact consecutive_stencil_impossible z t u v w r x y hz ht hu hv hw hr hx hy huw
+    (by linarith) (by linarith) (by linarith) (by linarith)
+
+
+/-- Use the dense bound at the actual lower positions1,2,3 and upper positions2,3,4.
+All displayed factorizations are complete. This bound depends on the unrestricted
+coefficients and does not exclude the dense length-five case. -/
+theorem labeled_dense_pattern_bound (n m a b c d e f z t u v w r x y : ℤ)
+    (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (hd : 0 < d) (he : 0 < e) (hf : 0 < f)
+    (hz : 0 < z) (ht : 0 < t) (hu : 0 < u) (hv : 0 < v)
+    (hw : 0 < w) (hr : 0 < r) (hx : 0 < x) (hy : 0 < y)
+    (hnm : n < m)
+    (hA1 : a * z * t * u = n + 1) (hA2 : b * v * w = n + 2) (hA3 : c * r * x = n + 3)
+    (hB2 : d * v * u = m + 2) (hB3 : e * z * r * w = m + 3) (hB4 : f * x * y = m + 4) :
+    ∃ q h j K L : ℤ, 0 < q ∧ 0 < h ∧ 0 < j ∧ 0 < K ∧ 0 < L ∧
+      2 * q = j * x ∧ L = 2 * (d * e * z - q * h) ∧ a * j * h ^ 2 * t < 2 * d ^ 2 * e * c ∧
+      K * L = 2 * (2 * d ^ 2 * e * c + a * j * h ^ 2 * t) ∧ L < 8 * d ^ 2 * e * c := by
+  have huw : b * w < d * u := by
+    by_contra hn
+    have hle : d * u ≤ b * w := by omega
+    nlinarith [mul_nonneg hv.le (sub_nonneg.mpr hle)]
+  exact dense_stencil_linear_bound a b c d e f z t u v w r x y
+    ha hb hc hd he hf hz ht hu hv hw hr hx hy huw
+    (by linarith) (by linarith) (by linarith) (by linarith)
+
+end Contribution.Erdos686TwentyFive.FactorStencil

@@ -1,12 +1,12 @@
 {
-  "script_sha256": "1d161e6d4c47a3bf3304f9ce6ae9bdc2aac0c98008f93a6c020f2d20a2d709c4",
-  "source_module_count": 9,
+  "script_sha256": "d9d0231c388995761e3ec894d8df5654d47b17ee1d14009ad21b440513c4428d",
+  "source_module_count": 10,
   "original_unique_proof_modules": 6,
   "new_ratio_bridge_modules": 1,
   "new_session14_modules": 2,
-  "named_declaration_count": 58,
-  "theorem_or_lemma_count": 45,
-  "public_theorem_or_lemma_count": 37,
+  "named_declaration_count": 68,
+  "theorem_or_lemma_count": 55,
+  "public_theorem_or_lemma_count": 43,
   "imports": [
     "import Mathlib.Algebra.BigOperators.Intervals",
     "import Mathlib.Tactic.Linarith",
@@ -22,7 +22,8 @@
     "import Mathlib.Algebra.Field.ZMod",
     "import Mathlib.LinearAlgebra.Basis.VectorSpace",
     "import Mathlib.LinearAlgebra.Dimension.Constructions",
-    "import Mathlib.Data.Rat.Lemmas"
+    "import Mathlib.Data.Rat.Lemmas",
+    "import Mathlib.Tactic.LinearCombination"
   ],
   "canonical_sources": [
     {
@@ -144,6 +145,26 @@
         "Contribution.Erdos686TwentyFive.SquarePair.k5_square_pair_exclusion",
         "Contribution.Erdos686TwentyFive.SquarePair.square_ratio_representation",
         "Contribution.Erdos686TwentyFive.SquarePair.cross_ratios_nonsquare"
+      ]
+    },
+    {
+      "path": "Stencil.lean",
+      "sha256": "88e9d599f7addf4a2587a5915cef30e9f1bdba73d47ad94d190a0a4b8517d9ca",
+      "declarations": [
+        "Contribution.Erdos686TwentyFive.FactorStencil.dense_stencil_reduction",
+        "Contribution.Erdos686TwentyFive.FactorStencil.dense_stencil_cubic_identity",
+        "Contribution.Erdos686TwentyFive.FactorStencil.dense_stencil_parameter_bound",
+        "Contribution.Erdos686TwentyFive.FactorStencil.dense_stencil_complementary_divisor",
+        "Contribution.Erdos686TwentyFive.FactorStencil.linear_divisor_bound",
+        "Contribution.Erdos686TwentyFive.FactorStencil.dense_stencil_linear_bound",
+        "Contribution.Erdos686TwentyFive.FactorStencil.reduced_system_impossible",
+        "Contribution.Erdos686TwentyFive.FactorStencil.consecutive_stencil_impossible",
+        "Contribution.Erdos686TwentyFive.FactorStencil.labeled_pattern_impossible",
+        "Contribution.Erdos686TwentyFive.FactorStencil.labeled_dense_pattern_bound"
+      ],
+      "provenance": [
+        "session20/FactorStencil.lean",
+        "session21/DenseStencil.lean"
       ]
     }
   ],
@@ -675,12 +696,78 @@
       "name": "Contribution.Erdos686TwentyFive.SquarePair.cross_ratios_nonsquare",
       "kind": "theorem",
       "private": false
+    },
+    {
+      "source": "Stencil.lean",
+      "name": "Contribution.Erdos686TwentyFive.FactorStencil.dense_stencil_reduction",
+      "kind": "theorem",
+      "private": false
+    },
+    {
+      "source": "Stencil.lean",
+      "name": "Contribution.Erdos686TwentyFive.FactorStencil.dense_stencil_cubic_identity",
+      "kind": "theorem",
+      "private": true
+    },
+    {
+      "source": "Stencil.lean",
+      "name": "Contribution.Erdos686TwentyFive.FactorStencil.dense_stencil_parameter_bound",
+      "kind": "theorem",
+      "private": true
+    },
+    {
+      "source": "Stencil.lean",
+      "name": "Contribution.Erdos686TwentyFive.FactorStencil.dense_stencil_complementary_divisor",
+      "kind": "theorem",
+      "private": false
+    },
+    {
+      "source": "Stencil.lean",
+      "name": "Contribution.Erdos686TwentyFive.FactorStencil.linear_divisor_bound",
+      "kind": "theorem",
+      "private": true
+    },
+    {
+      "source": "Stencil.lean",
+      "name": "Contribution.Erdos686TwentyFive.FactorStencil.dense_stencil_linear_bound",
+      "kind": "theorem",
+      "private": false
+    },
+    {
+      "source": "Stencil.lean",
+      "name": "Contribution.Erdos686TwentyFive.FactorStencil.reduced_system_impossible",
+      "kind": "theorem",
+      "private": true
+    },
+    {
+      "source": "Stencil.lean",
+      "name": "Contribution.Erdos686TwentyFive.FactorStencil.consecutive_stencil_impossible",
+      "kind": "theorem",
+      "private": false
+    },
+    {
+      "source": "Stencil.lean",
+      "name": "Contribution.Erdos686TwentyFive.FactorStencil.labeled_pattern_impossible",
+      "kind": "theorem",
+      "private": false
+    },
+    {
+      "source": "Stencil.lean",
+      "name": "Contribution.Erdos686TwentyFive.FactorStencil.labeled_dense_pattern_bound",
+      "kind": "theorem",
+      "private": false
     }
   ],
   "transformations": [
     "deduplicate imports at file top",
     "remove #print commands",
     "omit redundant Lean.Elab.Tactic.Omega import; Mathlib imports supply omega",
-    "add contribution-scope and provenance comments"
-  ]
+    "add contribution-scope and provenance comments",
+    "Add selected dense-stencil API in Contribution namespace; private implementation lemmas",
+    "Prove unscaled specialization by dense reduction and the session20 elementary contradiction",
+    "Add actual-position dense corollary",
+    "Omit generic matrix rearrangement, unrelated research results and diagnostic examples",
+    "Reduce added-module heartbeat budget to1000000"
+  ],
+  "scope": "Selected coherent stencil delta plus the existing pending PR; not an inventory of all research sessions."
 }

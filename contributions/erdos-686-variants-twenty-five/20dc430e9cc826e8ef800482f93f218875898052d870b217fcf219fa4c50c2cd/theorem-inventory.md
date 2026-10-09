@@ -1,24 +1,26 @@
-# Verified theorem inventory
+# Theorem inventory
 
-All 58 named definitions/lemmas/theorems below are preserved from the source modules; there are 37 public lemmas/theorems. Generated helper declarations and the anonymous decidability instance are additionally covered by the axiom audit. No complete k=5 or all-length theorem is claimed.
+The existing PR declarations are preserved. The selected new stencil API is listed
+separately below; private helpers support the public results and are not separate
+contribution claims. No complete k5 or all-length theorem is asserted.
 
 ## work/session4/K6.lean
 
-- `Contribution.Erdos686TwentyFive.sixProduct`
-- `Contribution.Erdos686TwentyFive.centralProduct`
-- `Contribution.Erdos686TwentyFive.centralQ`
-- `Contribution.Erdos686TwentyFive.centralProduct_eq`
-- `Contribution.Erdos686TwentyFive.central_identity`
-- `Contribution.Erdos686TwentyFive.centralQ_pos`
-- `Contribution.Erdos686TwentyFive.centralQ_mod`
-- `Contribution.Erdos686TwentyFive.sixProduct_pos`
-- `Contribution.Erdos686TwentyFive.upper_bound`
-- `Contribution.Erdos686TwentyFive.sixProduct_ne`
+- `Contribution.Erdos686TwentyFive.sixProduct` (private)
+- `Contribution.Erdos686TwentyFive.centralProduct` (private)
+- `Contribution.Erdos686TwentyFive.centralQ` (private)
+- `Contribution.Erdos686TwentyFive.centralProduct_eq` (private)
+- `Contribution.Erdos686TwentyFive.central_identity` (private)
+- `Contribution.Erdos686TwentyFive.centralQ_pos` (private)
+- `Contribution.Erdos686TwentyFive.centralQ_mod` (private)
+- `Contribution.Erdos686TwentyFive.sixProduct_pos` (private)
+- `Contribution.Erdos686TwentyFive.upper_bound` (private)
+- `Contribution.Erdos686TwentyFive.sixProduct_ne` (private)
 - `Contribution.Erdos686TwentyFive.k6_exclusion`
 
 ## work/session6/PrimeTransport.lean
 
-- `Contribution.Erdos686TwentyFive.prime_dvd_finset_prod`
+- `Contribution.Erdos686TwentyFive.prime_dvd_finset_prod` (private)
 - `Contribution.Erdos686TwentyFive.common_prime_le_width`
 - `Contribution.Erdos686TwentyFive.lower_prime_le_width`
 - `Contribution.Erdos686TwentyFive.upper_prime_le_width`
@@ -86,4 +88,17 @@ All 58 named definitions/lemmas/theorems below are preserved from the source mod
 - `Contribution.Erdos686TwentyFive.SquarePair.k5_square_pair_exclusion`
 - `Contribution.Erdos686TwentyFive.SquarePair.square_ratio_representation`
 - `Contribution.Erdos686TwentyFive.SquarePair.cross_ratios_nonsquare`
+
+## Stencil.lean
+
+- `Contribution.Erdos686TwentyFive.FactorStencil.dense_stencil_reduction`
+- `Contribution.Erdos686TwentyFive.FactorStencil.dense_stencil_cubic_identity` (private)
+- `Contribution.Erdos686TwentyFive.FactorStencil.dense_stencil_parameter_bound` (private)
+- `Contribution.Erdos686TwentyFive.FactorStencil.dense_stencil_complementary_divisor`
+- `Contribution.Erdos686TwentyFive.FactorStencil.linear_divisor_bound` (private)
+- `Contribution.Erdos686TwentyFive.FactorStencil.dense_stencil_linear_bound`
+- `Contribution.Erdos686TwentyFive.FactorStencil.reduced_system_impossible` (private)
+- `Contribution.Erdos686TwentyFive.FactorStencil.consecutive_stencil_impossible`
+- `Contribution.Erdos686TwentyFive.FactorStencil.labeled_pattern_impossible`
+- `Contribution.Erdos686TwentyFive.FactorStencil.labeled_dense_pattern_bound`
 

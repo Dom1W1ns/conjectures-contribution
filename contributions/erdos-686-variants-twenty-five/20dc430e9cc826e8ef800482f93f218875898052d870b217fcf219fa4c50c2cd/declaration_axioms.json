@@ -54,6 +54,14 @@
   "kind": "theorem",
   "axioms": ["propext", "Classical.choice", "Quot.sound"]},
  {"user_name":
+  "Contribution.Erdos686TwentyFive.FactorStencil.reduced_system_impossible._proof_1_5",
+  "unsafe": false,
+  "partial": false,
+  "name":
+  "_private._stdin.0.Contribution.Erdos686TwentyFive.FactorStencil.reduced_system_impossible._proof_1_5",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
+ {"user_name":
   "Contribution.Erdos686TwentyFive.SquarePair.finite_five_exclusion._proof_1_4",
   "unsafe": false,
   "partial": false,
@@ -82,6 +90,22 @@
   "Contribution.Erdos686TwentyFive.SquarePair.square_ratio_representation._proof_1_1",
   "kind": "theorem",
   "axioms": ["propext", "Classical.choice", "Quot.sound"]},
+ {"user_name":
+  "Contribution.Erdos686TwentyFive.FactorStencil.reduced_system_impossible._proof_1_13",
+  "unsafe": false,
+  "partial": false,
+  "name":
+  "_private._stdin.0.Contribution.Erdos686TwentyFive.FactorStencil.reduced_system_impossible._proof_1_13",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
+ {"user_name":
+  "Contribution.Erdos686TwentyFive.FactorStencil.dense_stencil_cubic_identity",
+  "unsafe": false,
+  "partial": false,
+  "name":
+  "_private._stdin.0.Contribution.Erdos686TwentyFive.FactorStencil.dense_stencil_cubic_identity",
+  "kind": "theorem",
+  "axioms": ["propext", "Classical.choice", "Quot.sound"]},
  {"user_name": "Contribution.Erdos686TwentyFive.SquarePair.square_gap",
   "unsafe": false,
   "partial": false,
@@ -94,6 +118,14 @@
   "name": "Contribution.Erdos686TwentyFive.SquarePair.r.match_1",
   "kind": "definition",
   "axioms": []},
+ {"user_name":
+  "Contribution.Erdos686TwentyFive.FactorStencil.dense_stencil_complementary_divisor",
+  "unsafe": false,
+  "partial": false,
+  "name":
+  "Contribution.Erdos686TwentyFive.FactorStencil.dense_stencil_complementary_divisor",
+  "kind": "theorem",
+  "axioms": ["propext", "Classical.choice", "Quot.sound"]},
  {"user_name":
   "Contribution.Erdos686TwentyFive.SquarePair.common_square_pair_exclusion._proof_1_7",
   "unsafe": false,
@@ -121,6 +153,14 @@
   "name": "Contribution.Erdos686TwentyFive.SquarePair.near_identity",
   "kind": "theorem",
   "axioms": ["propext"]},
+ {"user_name":
+  "Contribution.Erdos686TwentyFive.FactorStencil.reduced_system_impossible",
+  "unsafe": false,
+  "partial": false,
+  "name":
+  "_private._stdin.0.Contribution.Erdos686TwentyFive.FactorStencil.reduced_system_impossible",
+  "kind": "theorem",
+  "axioms": ["propext", "Classical.choice", "Quot.sound"]},
  {"user_name":
   "Contribution.Erdos686TwentyFive.SquarePair.square_ratio_representation._proof_1_3",
   "unsafe": false,
@@ -205,11 +245,35 @@
   "kind": "theorem",
   "axioms": []},
  {"user_name":
+  "Contribution.Erdos686TwentyFive.FactorStencil.reduced_system_impossible._proof_1_14",
+  "unsafe": false,
+  "partial": false,
+  "name":
+  "_private._stdin.0.Contribution.Erdos686TwentyFive.FactorStencil.reduced_system_impossible._proof_1_14",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
+ {"user_name":
+  "Contribution.Erdos686TwentyFive.FactorStencil.dense_stencil_parameter_bound",
+  "unsafe": false,
+  "partial": false,
+  "name":
+  "_private._stdin.0.Contribution.Erdos686TwentyFive.FactorStencil.dense_stencil_parameter_bound",
+  "kind": "theorem",
+  "axioms": ["propext", "Classical.choice", "Quot.sound"]},
+ {"user_name":
   "Contribution.Erdos686TwentyFive.SquareCenter.common_square_factor_exclusion._proof_1_15",
   "unsafe": false,
   "partial": false,
   "name":
   "Contribution.Erdos686TwentyFive.SquareCenter.common_square_factor_exclusion._proof_1_15",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
+ {"user_name":
+  "Contribution.Erdos686TwentyFive.FactorStencil.dense_stencil_complementary_divisor._proof_1_1",
+  "unsafe": false,
+  "partial": false,
+  "name":
+  "Contribution.Erdos686TwentyFive.FactorStencil.dense_stencil_complementary_divisor._proof_1_1",
   "kind": "theorem",
   "axioms": ["propext", "Quot.sound"]},
  {"user_name":
@@ -262,6 +326,14 @@
   "kind": "theorem",
   "axioms": ["propext"]},
  {"user_name":
+  "Contribution.Erdos686TwentyFive.FactorStencil.dense_stencil_linear_bound",
+  "unsafe": false,
+  "partial": false,
+  "name":
+  "Contribution.Erdos686TwentyFive.FactorStencil.dense_stencil_linear_bound",
+  "kind": "theorem",
+  "axioms": ["propext", "Classical.choice", "Quot.sound"]},
+ {"user_name":
   "Contribution.Erdos686TwentyFive.SquarePair.residual_separation._proof_1_2",
   "unsafe": false,
   "partial": false,
@@ -299,6 +371,14 @@
   "_private._stdin.0.Contribution.Erdos686TwentyFive.SquarePair.q.match_1.eq_5",
   "kind": "theorem",
   "axioms": []},
+ {"user_name":
+  "Contribution.Erdos686TwentyFive.FactorStencil.dense_stencil_linear_bound._proof_1_1",
+  "unsafe": false,
+  "partial": false,
+  "name":
+  "Contribution.Erdos686TwentyFive.FactorStencil.dense_stencil_linear_bound._proof_1_1",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
  {"user_name":
   "Contribution.Erdos686TwentyFive.SquareCenter.common_square_factor_exclusion._proof_1_2",
   "unsafe": false,
@@ -371,6 +451,30 @@
   "kind": "theorem",
   "axioms": ["propext", "Quot.sound"]},
  {"user_name":
+  "Contribution.Erdos686TwentyFive.FactorStencil.dense_stencil_reduction._proof_1_4",
+  "unsafe": false,
+  "partial": false,
+  "name":
+  "Contribution.Erdos686TwentyFive.FactorStencil.dense_stencil_reduction._proof_1_4",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
+ {"user_name":
+  "Contribution.Erdos686TwentyFive.FactorStencil.labeled_dense_pattern_bound._proof_1_1",
+  "unsafe": false,
+  "partial": false,
+  "name":
+  "Contribution.Erdos686TwentyFive.FactorStencil.labeled_dense_pattern_bound._proof_1_1",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
+ {"user_name":
+  "Contribution.Erdos686TwentyFive.FactorStencil.reduced_system_impossible._proof_1_9",
+  "unsafe": false,
+  "partial": false,
+  "name":
+  "_private._stdin.0.Contribution.Erdos686TwentyFive.FactorStencil.reduced_system_impossible._proof_1_9",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
+ {"user_name":
   "Contribution.Erdos686TwentyFive.SquarePair.cross_ratios_nonsquare",
   "unsafe": false,
   "partial": false,
@@ -400,6 +504,14 @@
   "name": "Contribution.Erdos686TwentyFive.SquarePair.square_gap._proof_1_9",
   "kind": "theorem",
   "axioms": ["propext", "Quot.sound"]},
+ {"user_name":
+  "Contribution.Erdos686TwentyFive.FactorStencil.reduced_system_impossible._proof_1_12",
+  "unsafe": false,
+  "partial": false,
+  "name":
+  "_private._stdin.0.Contribution.Erdos686TwentyFive.FactorStencil.reduced_system_impossible._proof_1_12",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
  {"user_name": "Contribution.Erdos686TwentyFive.SquarePair.r_bound._proof_1_6",
   "unsafe": false,
   "partial": false,
@@ -412,6 +524,14 @@
   "name": "Contribution.Erdos686TwentyFive.SquarePair.r.eq_3",
   "kind": "theorem",
   "axioms": []},
+ {"user_name":
+  "Contribution.Erdos686TwentyFive.FactorStencil.reduced_system_impossible._proof_1_10",
+  "unsafe": false,
+  "partial": false,
+  "name":
+  "_private._stdin.0.Contribution.Erdos686TwentyFive.FactorStencil.reduced_system_impossible._proof_1_10",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
  {"user_name": "Contribution.Erdos686TwentyFive.SquarePair.bracket",
   "unsafe": false,
   "partial": false,
@@ -432,12 +552,28 @@
   "name": "Contribution.Erdos686TwentyFive.SquarePair.square_gap._proof_1_11",
   "kind": "theorem",
   "axioms": ["propext", "Quot.sound"]},
+ {"user_name":
+  "Contribution.Erdos686TwentyFive.FactorStencil.reduced_system_impossible._proof_1_2",
+  "unsafe": false,
+  "partial": false,
+  "name":
+  "_private._stdin.0.Contribution.Erdos686TwentyFive.FactorStencil.reduced_system_impossible._proof_1_2",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
  {"user_name": "Contribution.Erdos686TwentyFive.SquarePair.residual_separation",
   "unsafe": false,
   "partial": false,
   "name": "Contribution.Erdos686TwentyFive.SquarePair.residual_separation",
   "kind": "theorem",
   "axioms": ["propext", "Classical.choice", "Quot.sound"]},
+ {"user_name":
+  "Contribution.Erdos686TwentyFive.FactorStencil.reduced_system_impossible._proof_1_3",
+  "unsafe": false,
+  "partial": false,
+  "name":
+  "_private._stdin.0.Contribution.Erdos686TwentyFive.FactorStencil.reduced_system_impossible._proof_1_3",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
  {"user_name": "Contribution.Erdos686TwentyFive.upper_bound._proof_1_7",
   "unsafe": false,
   "partial": false,
@@ -513,6 +649,14 @@
   "_private._stdin.0.Contribution.Erdos686TwentyFive.sixProduct_ne._proof_1_6",
   "kind": "theorem",
   "axioms": ["propext", "Quot.sound"]},
+ {"user_name":
+  "Contribution.Erdos686TwentyFive.FactorStencil.labeled_dense_pattern_bound",
+  "unsafe": false,
+  "partial": false,
+  "name":
+  "Contribution.Erdos686TwentyFive.FactorStencil.labeled_dense_pattern_bound",
+  "kind": "theorem",
+  "axioms": ["propext", "Classical.choice", "Quot.sound"]},
  {"user_name": "Contribution.Erdos686TwentyFive.SquarePair.r_bound._proof_1_7",
   "unsafe": false,
   "partial": false,
@@ -575,6 +719,14 @@
   "kind": "definition",
   "axioms": ["propext"]},
  {"user_name":
+  "Contribution.Erdos686TwentyFive.FactorStencil.dense_stencil_reduction",
+  "unsafe": false,
+  "partial": false,
+  "name":
+  "Contribution.Erdos686TwentyFive.FactorStencil.dense_stencil_reduction",
+  "kind": "theorem",
+  "axioms": ["propext", "Classical.choice", "Quot.sound"]},
+ {"user_name":
   "Contribution.Erdos686TwentyFive.SquarePair.square_gap._proof_1_23",
   "unsafe": false,
   "partial": false,
@@ -631,6 +783,14 @@
   "kind": "theorem",
   "axioms": ["propext", "Quot.sound"]},
  {"user_name":
+  "Contribution.Erdos686TwentyFive.FactorStencil.linear_divisor_bound._proof_1_1",
+  "unsafe": false,
+  "partial": false,
+  "name":
+  "_private._stdin.0.Contribution.Erdos686TwentyFive.FactorStencil.linear_divisor_bound._proof_1_1",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
+ {"user_name":
   "Contribution.Erdos686TwentyFive.SquareCenter.common_square_factor_exclusion._proof_1_13",
   "unsafe": false,
   "partial": false,
@@ -644,6 +804,14 @@
   "name": "Contribution.Erdos686TwentyFive.SquareCenter.less_than_double",
   "kind": "theorem",
   "axioms": ["propext", "Classical.choice", "Quot.sound"]},
+ {"user_name":
+  "Contribution.Erdos686TwentyFive.FactorStencil.dense_stencil_reduction._proof_1_5",
+  "unsafe": false,
+  "partial": false,
+  "name":
+  "Contribution.Erdos686TwentyFive.FactorStencil.dense_stencil_reduction._proof_1_5",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
  {"user_name": "Contribution.Erdos686TwentyFive.SquarePair.r_bound",
   "unsafe": false,
   "partial": false,
@@ -657,6 +825,14 @@
   "_private._stdin.0.Contribution.Erdos686TwentyFive.sixProduct_ne._proof_1_2",
   "kind": "theorem",
   "axioms": ["propext", "Quot.sound"]},
+ {"user_name":
+  "Contribution.Erdos686TwentyFive.FactorStencil.labeled_pattern_impossible",
+  "unsafe": false,
+  "partial": false,
+  "name":
+  "Contribution.Erdos686TwentyFive.FactorStencil.labeled_pattern_impossible",
+  "kind": "theorem",
+  "axioms": ["propext", "Classical.choice", "Quot.sound"]},
  {"user_name":
   "Contribution.Erdos686TwentyFive.SquareCenter.product_positive._proof_1_1",
   "unsafe": false,
@@ -685,6 +861,22 @@
   "name": "_private._stdin.0.Contribution.Erdos686TwentyFive.sixProduct_pos",
   "kind": "theorem",
   "axioms": ["propext", "Classical.choice", "Quot.sound"]},
+ {"user_name":
+  "Contribution.Erdos686TwentyFive.FactorStencil.dense_stencil_reduction._proof_1_3",
+  "unsafe": false,
+  "partial": false,
+  "name":
+  "Contribution.Erdos686TwentyFive.FactorStencil.dense_stencil_reduction._proof_1_3",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
+ {"user_name":
+  "Contribution.Erdos686TwentyFive.FactorStencil.dense_stencil_reduction._proof_1_2",
+  "unsafe": false,
+  "partial": false,
+  "name":
+  "Contribution.Erdos686TwentyFive.FactorStencil.dense_stencil_reduction._proof_1_2",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
  {"user_name":
   "Contribution.Erdos686TwentyFive.SquareCenter.common_square_factor_exclusion._proof_1_10",
   "unsafe": false,
@@ -774,6 +966,14 @@
   "kind": "theorem",
   "axioms": ["propext"]},
  {"user_name":
+  "Contribution.Erdos686TwentyFive.FactorStencil.reduced_system_impossible._proof_1_4",
+  "unsafe": false,
+  "partial": false,
+  "name":
+  "_private._stdin.0.Contribution.Erdos686TwentyFive.FactorStencil.reduced_system_impossible._proof_1_4",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
+ {"user_name":
   "Contribution.Erdos686TwentyFive.SquarePair.finite_five_exclusion._proof_1_5",
   "unsafe": false,
   "partial": false,
@@ -794,6 +994,14 @@
   "unsafe": false,
   "partial": false,
   "name": "Contribution.Erdos686TwentyFive.SquarePair.block_upper._proof_1_5",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
+ {"user_name":
+  "Contribution.Erdos686TwentyFive.FactorStencil.dense_stencil_parameter_bound._proof_1_1",
+  "unsafe": false,
+  "partial": false,
+  "name":
+  "_private._stdin.0.Contribution.Erdos686TwentyFive.FactorStencil.dense_stencil_parameter_bound._proof_1_1",
   "kind": "theorem",
   "axioms": ["propext", "Quot.sound"]},
  {"user_name": "Contribution.Erdos686TwentyFive.SquarePair.check",
@@ -857,11 +1065,27 @@
   "kind": "definition",
   "axioms": []},
  {"user_name":
+  "Contribution.Erdos686TwentyFive.FactorStencil.reduced_system_impossible._proof_1_15",
+  "unsafe": false,
+  "partial": false,
+  "name":
+  "_private._stdin.0.Contribution.Erdos686TwentyFive.FactorStencil.reduced_system_impossible._proof_1_15",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
+ {"user_name":
   "Contribution.Erdos686TwentyFive.SquareCenter.common_square_factor_exclusion._proof_1_14",
   "unsafe": false,
   "partial": false,
   "name":
   "Contribution.Erdos686TwentyFive.SquareCenter.common_square_factor_exclusion._proof_1_14",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
+ {"user_name":
+  "Contribution.Erdos686TwentyFive.FactorStencil.dense_stencil_reduction._proof_1_6",
+  "unsafe": false,
+  "partial": false,
+  "name":
+  "Contribution.Erdos686TwentyFive.FactorStencil.dense_stencil_reduction._proof_1_6",
   "kind": "theorem",
   "axioms": ["propext", "Quot.sound"]},
  {"user_name":
@@ -932,6 +1156,14 @@
   "kind": "theorem",
   "axioms": []},
  {"user_name":
+  "Contribution.Erdos686TwentyFive.FactorStencil.dense_stencil_reduction._proof_1_1",
+  "unsafe": false,
+  "partial": false,
+  "name":
+  "Contribution.Erdos686TwentyFive.FactorStencil.dense_stencil_reduction._proof_1_1",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
+ {"user_name":
   "Contribution.Erdos686TwentyFive.SquareCenter.common_square_factor_exclusion._proof_1_8",
   "unsafe": false,
   "partial": false,
@@ -989,6 +1221,14 @@
   "name": "Contribution.Erdos686TwentyFive.SquarePair.k5_square_pair_exclusion",
   "kind": "theorem",
   "axioms": ["propext", "Classical.choice", "Quot.sound"]},
+ {"user_name":
+  "Contribution.Erdos686TwentyFive.FactorStencil.linear_divisor_bound._proof_1_2",
+  "unsafe": false,
+  "partial": false,
+  "name":
+  "_private._stdin.0.Contribution.Erdos686TwentyFive.FactorStencil.linear_divisor_bound._proof_1_2",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
  {"user_name":
   "Contribution.Erdos686TwentyFive.common_prime_le_width._proof_1_2",
   "unsafe": false,
@@ -1102,6 +1342,14 @@
   "partial": false,
   "name":
   "_private._stdin.0.Contribution.Erdos686TwentyFive.centralQ_mod._proof_1_3",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
+ {"user_name":
+  "Contribution.Erdos686TwentyFive.FactorStencil.reduced_system_impossible._proof_1_7",
+  "unsafe": false,
+  "partial": false,
+  "name":
+  "_private._stdin.0.Contribution.Erdos686TwentyFive.FactorStencil.reduced_system_impossible._proof_1_7",
   "kind": "theorem",
   "axioms": ["propext", "Quot.sound"]},
  {"user_name": "Contribution.Erdos686TwentyFive.dvd_shifted_prod_sub_prod",
@@ -1242,10 +1490,26 @@
   "name": "Contribution.Erdos686TwentyFive.SquarePair.check_sound._proof_1_5",
   "kind": "theorem",
   "axioms": ["propext", "Quot.sound"]},
+ {"user_name":
+  "Contribution.Erdos686TwentyFive.FactorStencil.reduced_system_impossible._proof_1_1",
+  "unsafe": false,
+  "partial": false,
+  "name":
+  "_private._stdin.0.Contribution.Erdos686TwentyFive.FactorStencil.reduced_system_impossible._proof_1_1",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
  {"user_name": "Contribution.Erdos686TwentyFive.central_identity",
   "unsafe": false,
   "partial": false,
   "name": "_private._stdin.0.Contribution.Erdos686TwentyFive.central_identity",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
+ {"user_name":
+  "Contribution.Erdos686TwentyFive.FactorStencil.reduced_system_impossible._proof_1_8",
+  "unsafe": false,
+  "partial": false,
+  "name":
+  "_private._stdin.0.Contribution.Erdos686TwentyFive.FactorStencil.reduced_system_impossible._proof_1_8",
   "kind": "theorem",
   "axioms": ["propext", "Quot.sound"]},
  {"user_name":
@@ -1267,6 +1531,14 @@
   "unsafe": false,
   "partial": false,
   "name": "Contribution.Erdos686TwentyFive.SquarePair.q_lower",
+  "kind": "theorem",
+  "axioms": ["propext", "Classical.choice", "Quot.sound"]},
+ {"user_name":
+  "Contribution.Erdos686TwentyFive.FactorStencil.consecutive_stencil_impossible",
+  "unsafe": false,
+  "partial": false,
+  "name":
+  "Contribution.Erdos686TwentyFive.FactorStencil.consecutive_stencil_impossible",
   "kind": "theorem",
   "axioms": ["propext", "Classical.choice", "Quot.sound"]},
  {"user_name":
@@ -1310,6 +1582,14 @@
   "name": "Contribution.Erdos686TwentyFive.higherContact_certificate_dvd",
   "kind": "theorem",
   "axioms": ["propext", "Classical.choice", "Quot.sound"]},
+ {"user_name":
+  "Contribution.Erdos686TwentyFive.FactorStencil.reduced_system_impossible._proof_1_6",
+  "unsafe": false,
+  "partial": false,
+  "name":
+  "_private._stdin.0.Contribution.Erdos686TwentyFive.FactorStencil.reduced_system_impossible._proof_1_6",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
  {"user_name":
   "Contribution.Erdos686TwentyFive.SquarePair.square_gap._proof_1_15",
   "unsafe": false,
@@ -1363,6 +1643,22 @@
   "kind": "theorem",
   "axioms": ["propext"]},
  {"user_name":
+  "Contribution.Erdos686TwentyFive.FactorStencil.labeled_pattern_impossible._proof_1_1",
+  "unsafe": false,
+  "partial": false,
+  "name":
+  "Contribution.Erdos686TwentyFive.FactorStencil.labeled_pattern_impossible._proof_1_1",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
+ {"user_name":
+  "Contribution.Erdos686TwentyFive.FactorStencil.reduced_system_impossible._proof_1_11",
+  "unsafe": false,
+  "partial": false,
+  "name":
+  "_private._stdin.0.Contribution.Erdos686TwentyFive.FactorStencil.reduced_system_impossible._proof_1_11",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
+ {"user_name":
   "Contribution.Erdos686TwentyFive.SquarePair.square_gap._proof_1_2",
   "unsafe": false,
   "partial": false,
@@ -1407,6 +1703,14 @@
   "name": "_private._stdin.0.Contribution.Erdos686TwentyFive.sixProduct",
   "kind": "definition",
   "axioms": []},
+ {"user_name":
+  "Contribution.Erdos686TwentyFive.FactorStencil.linear_divisor_bound",
+  "unsafe": false,
+  "partial": false,
+  "name":
+  "_private._stdin.0.Contribution.Erdos686TwentyFive.FactorStencil.linear_divisor_bound",
+  "kind": "theorem",
+  "axioms": ["propext", "Classical.choice", "Quot.sound"]},
  {"user_name":
   "Contribution.Erdos686TwentyFive.SquareCenter.common_square_factor_exclusion._proof_1_4",
   "unsafe": false,

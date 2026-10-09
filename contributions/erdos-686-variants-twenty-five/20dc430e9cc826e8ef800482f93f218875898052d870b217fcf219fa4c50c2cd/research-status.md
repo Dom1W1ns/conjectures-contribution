@@ -1,3 +1,14 @@
+# Current status: partial results, dense arithmetic gap remains
+
+The newly added complete-factor results and their intended uses are documented
+in stencil-guide.md. The dense bound retains unbounded coefficients, so neither
+length five nor the all-length target is settled. The restricted stencil does
+not provide new remaining k5 coverage relative to the prior external proper-
+support exclusion. No complete witness or bounty claim accompanies this update.
+
+The following earlier square-pair proof and arithmetic-geometry notes are retained
+as background, with their verification boundaries unchanged.
+
 # New verified partial result: all 25 square-pair branches excluded
 
 Let P(n)=product_{h=1}^5(n+h). Suppose P(m)=25P(n), m>=n+5, and some cross pair has n+i=d*a^2 and m+j=d*b^2, with positive integers d,a,b. Put u=n+i and v=m+j. For each i, define P_i(t)=product_{h!=i}(t+h-i). The exact identities Q_i(t)^2-64P_i(t)=R_i(t) are:

@@ -1,5 +1,5 @@
 {
-  "contribution_id": "3bc3477f5593f193b2fe64a4f9d838bffe30f7841dcedebe1a35f1420eeb072f",
+  "contribution_id": "20dc430e9cc826e8ef800482f93f218875898052d870b217fcf219fa4c50c2cd",
   "payload": {
     "artifacts": [
       {
@@ -14,8 +14,8 @@
       },
       {
         "name": "declaration_axioms.json",
-        "sha256": "5209bff26c34722f04dd8c75d4e7637a170b716811959c78bcc8c2e133442ccd",
-        "size": 56668
+        "sha256": "23ba59aa61afee2227bd36158e85d5fe007b294b866db7e33253a83f48224b16",
+        "size": 68524
       },
       {
         "name": "field36-maximal-order.txt",
@@ -99,33 +99,38 @@
       },
       {
         "name": "research-status.md",
-        "sha256": "3ecaa0745aa8f050185cbd0dc9fa427aec88d41a300a819e1dca7dd914beff28",
-        "size": 8462
+        "sha256": "2403e64c7713604420e820d582faa032703547ffb94d99e4ad206c411301b4d8",
+        "size": 9067
       },
       {
         "name": "script.lean",
-        "sha256": "1d161e6d4c47a3bf3304f9ce6ae9bdc2aac0c98008f93a6c020f2d20a2d709c4",
-        "size": 37634
+        "sha256": "d9d0231c388995761e3ec894d8df5654d47b17ee1d14009ad21b440513c4428d",
+        "size": 55041
       },
       {
         "name": "source_manifest.json",
-        "sha256": "a3391d400329bf83bb88a6bffe89e5ae4120a1d82fd5a20900c81ee7724d8a9e",
-        "size": 27761
+        "sha256": "beca1a0b963f26cd29dd980e1df1828884eb7efe0b7e372e8765f6a4d89b19a0",
+        "size": 31263
       },
       {
         "name": "sources.md",
-        "sha256": "965e981ad40ac44602e7ffb0cb2e54cb2cd418f0329a2756c8404e0ce0f9ae0d",
-        "size": 7977
+        "sha256": "cc1b04f8549d7eb9de89de429022f28aa1bd78781f491e4604952cd8cb609a37",
+        "size": 10091
+      },
+      {
+        "name": "stencil-guide.md",
+        "sha256": "607f0b6412a12018e218554dcaf4f39846506858c116af92ba315700d7c071ab",
+        "size": 5088
       },
       {
         "name": "theorem-inventory.md",
-        "sha256": "a8180a694f0a213179ccc64de54729200e1b794ffcbce31f815fab8edf416333",
-        "size": 4144
+        "sha256": "81f2b5431ab56f83374caaff6745f210aaa3d99486460ab56e80c8c3ac515261",
+        "size": 5030
       },
       {
         "name": "verification.json",
-        "sha256": "f0d38fa28368c1fc2934c6ea3b245d0ca847e5934a1d961cbc7ca177b5f0fa8f",
-        "size": 746
+        "sha256": "bae65c881773e47be43fcaa9b2eee3c8a5b1d07779fe00dd9e7103c3eeb660bc",
+        "size": 1184
       },
       {
         "name": "verify-isogeny-screen.py",
@@ -160,8 +165,8 @@
     "schema_version": 1,
     "target": "erdos-686-variants-twenty-five",
     "tasks_commit": "6a786f997e18e8f095762a2830d191b7e25e505e",
-    "title": "Multiplier25: length-six exclusion and all-height length-five square-pair exclusions"
+    "title": "Multiplier25: length-six and square-pair exclusions with complete-factor stencil bounds"
   },
-  "reward_signature": "f4d6feb27b3c29935b22804ebab31f5fea42fffcfe771fe8f011d15971db1540780ba21de3dea6a5fb778648e5af67086f0743f573e96b16195fd6472ab55783",
-  "signature": "563e75c33a9e0c732c93b352a82e29d7c4e28712ad75f43e645ed8d390104056727fbddcc1f90c967495cf1e7a89830649982a68fe4e4a52c2e3f05a4096830f"
+  "reward_signature": "94df6fb98fef2c23495460964aedf99276ae3577286989d408170d6f67d7446bbd0272c7ff68211ddd37f47c2051695f1105a25037be8e7aac9ad7c95ec5978c",
+  "signature": "4858cbf16b3b5add397f53844b691ccdfb5a86b7717e5d50a9cda37c9753e57d131520d11df4829428833b1f45e22669a27b979a7fb1e211c8f063927887630e"
 }
